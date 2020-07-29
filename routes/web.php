@@ -29,6 +29,7 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
     $router->group(['namespace' => 'Api\V1'], function ($router) {
         $router->post('register', 'UserController@register');
+        $router->post('code-request', 'UserController@codeRequest');
 
         /** Authenticated Users Only */
         $router->group(['middleware' => 'auth'], function ($router) {

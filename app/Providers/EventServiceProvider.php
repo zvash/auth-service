@@ -15,5 +15,8 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\ExampleEvent::class => [
             \App\Listeners\ExampleListener::class,
         ],
+        \Laravel\Passport\Events\AccessTokenCreated::class => [
+            \App\Listeners\ForceResetUserPassword::class,
+        ],
     ];
 }

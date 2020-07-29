@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
@@ -39,5 +40,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function findForPassport(string $username)
     {
         return $this->where('email', $username)->orWhere('phone', $username)->first();
+    }
+
+    /**
+     * @return User
+     */
+    public function forceResetPassword()
+    {
+        $password = Hash::make(make_random_hash());
+        $this->setAttribute('password', $password)->save();
+        return $this;
     }
 }

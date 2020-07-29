@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Services\NotificationService;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,15 +17,15 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     * @param NotificationService $notificationService
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function register(Request $request)
+    public function register(Request $request, NotificationService $notificationService)
     {
         $validator = Validator::make($request->all(), [
             'phone' => ['required', 'unique:users'],
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            //'password' => 'required|string|min:6',
+            'email' => 'string|email|max:255|unique:users',
             'country_code' => 'required|string',
 
         ]);
@@ -36,10 +37,12 @@ class UserController extends Controller
         $input = $request->all();
         $generatedPassword = mt_rand(1000, 9999);
         $input['password'] = Hash::make($generatedPassword);
-        User::create($input);
-        $input = $request->all();
+        $user = User::create($input);
+        $this->generateActivationCode($user, $notificationService);
 
-        $client = Client::where('password_client', 1)->first();
+        return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => ['message' => 'You will receive an activation code']], 200);
+
+        //$client = Client::where('password_client', 1)->first();
 
         //send text message to user
 
@@ -215,5 +218,42 @@ class UserController extends Controller
             ], 200);
         }
         return response(['message' => 'failed', 'errors' => 'content not found', 'status' => false, 'data' => []], 404);
+    }
+
+    /**
+     * @param Request $request
+     * @param NotificationService $notificationService
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function codeRequest(Request $request, NotificationService $notificationService)
+    {
+        $validator = Validator::make($request->all(), [
+            'identifier' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return response(['message' => 'Validation errors', 'errors' =>  $validator->errors(), 'status' => false], 422);
+        }
+        $identifier = $request->get('identifier');
+        $user = User::where('phone', $identifier)->orWhere('email', $identifier)->first();
+        if ($user) {
+            $this->generateActivationCode($user, $notificationService);
+            return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => ['message' => 'You will receive an activation code']], 200);
+        }
+        return response(['message' => 'failed', 'errors' => 'content not found', 'status' => false, 'data' => []], 404);
+    }
+
+    /**
+     * @param User $user
+     * @param NotificationService $notificationService
+     * @param string $password
+     */
+    private function generateActivationCode(User $user, NotificationService $notificationService, string $password = '')
+    {
+        if (!$password) {
+            $password = str_pad(mt_rand(1000, 9999), 4, "0");
+            $user->setAttribute('password', Hash::make($password))->save();
+        }
+        $notificationService->sendLoginActivationCode($user, $password);
     }
 }
