@@ -118,5 +118,6 @@ $app->router->group([
 \Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
 
 $app->configure('auth');
+$app->configure('countries');
 
 return $app;

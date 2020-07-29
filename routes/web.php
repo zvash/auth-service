@@ -28,6 +28,9 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
     $router->post('login', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
 
     $router->group(['namespace' => 'Api\V1'], function ($router) {
+
+        $router->get('countries', 'CountryController@getAll');
+
         $router->post('register', 'UserController@register');
         $router->post('code-request', 'UserController@codeRequest');
 
