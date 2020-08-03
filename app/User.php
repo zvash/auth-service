@@ -20,7 +20,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password',
+        'name', 'email', 'phone', 'password', 'country', 'date_of_birth', 'gender', 'referral_code'
     ];
 
     /**
@@ -30,7 +30,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'password',
+        'reset_password_token',
     ];
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
 
     /**
      * Override the field which is used for username in the authentication
@@ -50,5 +59,23 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $password = Hash::make(make_random_hash());
         $this->setAttribute('password', $password)->save();
         return $this;
+    }
+
+    /**
+     * Set Referral Code for User.
+     */
+    public function setReferralCode()
+    {
+        $referralCode = make_random_referral_code();
+        try {
+            $this
+                ->setAttribute('referral_code', $referralCode)
+                ->save();
+        } catch (\Illuminate\Database\QueryException $exception) {
+            $message = $exception->getMessage();
+            if (strpos($message, 'Duplicate entry') !== false) {
+                $this->setReferralCode();
+            }
+        }
     }
 }

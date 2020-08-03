@@ -6,7 +6,6 @@ namespace App\Services;
 use App\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7\Request;
 
 class NotificationService
 {

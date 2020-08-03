@@ -38,8 +38,12 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->group(['middleware' => 'auth'], function ($router) {
             $router->get('logout', 'UserController@logout');
             $router->get('authenticate', 'UserController@authenticate');
-            $router->post('password/change', 'UserController@changePassword');
             $router->get('me', 'UserController@getUser');
+        });
+
+        $router->group(['middleware' => 'admin'], function ($router) {
+            $router->post('admin/password/change', 'UserController@changePassword');
+            $router->post('admin/register', 'UserController@registerAdmin');
         });
     });
 

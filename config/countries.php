@@ -2,1254 +2,1504 @@
 
 return [
     "Afghanistan" => [
-        "Abbr" => "AF",
+        "alpha2" => "AF",
         "phone" => "+93",
-        "emoji" => "🇦🇫"
+        "emoji" => "🇦🇫",
+        "alpha3" => "AFG"
     ],
     "Albania" => [
-        "Abbr" => "AL",
+        "alpha2" => "AL",
         "phone" => "+355",
-        "emoji" => "🇦🇱"
+        "emoji" => "🇦🇱",
+        "alpha3" => "ALB"
     ],
     "Algeria" => [
-        "Abbr" => "DZ",
+        "alpha2" => "DZ",
         "phone" => "+213",
-        "emoji" => "🇩🇿"
+        "emoji" => "🇩🇿",
+        "alpha3" => "DZA"
     ],
     "American Samoa" => [
-        "Abbr" => "AS",
+        "alpha2" => "AS",
         "phone" => "+1684",
-        "emoji" => "🇦🇸"
+        "emoji" => "🇦🇸",
+        "alpha3" => "ASM"
     ],
     "Andorra" => [
-        "Abbr" => "AD",
+        "alpha2" => "AD",
         "phone" => "+376",
-        "emoji" => "🇦🇩"
+        "emoji" => "🇦🇩",
+        "alpha3" => "AND"
     ],
     "Angola" => [
-        "Abbr" => "AO",
+        "alpha2" => "AO",
         "phone" => "+244",
-        "emoji" => "🇦🇴"
+        "emoji" => "🇦🇴",
+        "alpha3" => "AGO"
     ],
     "Anguilla" => [
-        "Abbr" => "AI",
+        "alpha2" => "AI",
         "phone" => "+1264",
-        "emoji" => "🇦🇮"
+        "emoji" => "🇦🇮",
+        "alpha3" => "AIA"
     ],
     "Antarctica" => [
-        "Abbr" => "AQ",
+        "alpha2" => "AQ",
         "phone" => "+672",
-        "emoji" => "🇦🇶"
+        "emoji" => "🇦🇶",
+        "alpha3" => "ATA"
     ],
     "Antigua and Barbuda" => [
-        "Abbr" => "AG",
+        "alpha2" => "AG",
         "phone" => "+1268",
-        "emoji" => "🇦🇬"
+        "emoji" => "🇦🇬",
+        "alpha3" => "ATG"
     ],
     "Argentina" => [
-        "Abbr" => "AR",
+        "alpha2" => "AR",
         "phone" => "+54",
-        "emoji" => "🇦🇷"
+        "emoji" => "🇦🇷",
+        "alpha3" => "ARG"
     ],
     "Armenia" => [
-        "Abbr" => "AM",
+        "alpha2" => "AM",
         "phone" => "+374",
-        "emoji" => "🇦🇲"
+        "emoji" => "🇦🇲",
+        "alpha3" => "ARM"
     ],
     "Aruba" => [
-        "Abbr" => "AW",
+        "alpha2" => "AW",
         "phone" => "+297",
-        "emoji" => "🇦🇼"
+        "emoji" => "🇦🇼",
+        "alpha3" => "ABW"
     ],
     "Australia" => [
-        "Abbr" => "AU",
+        "alpha2" => "AU",
         "phone" => "+61",
-        "emoji" => "🇦🇺"
+        "emoji" => "🇦🇺",
+        "alpha3" => "AUS"
     ],
     "Austria" => [
-        "Abbr" => "AT",
+        "alpha2" => "AT",
         "phone" => "+43",
-        "emoji" => "🇦🇹"
+        "emoji" => "🇦🇹",
+        "alpha3" => "AUT"
     ],
     "Azerbaijan" => [
-        "Abbr" => "AZ",
+        "alpha2" => "AZ",
         "phone" => "+994",
-        "emoji" => "🇦🇿"
+        "emoji" => "🇦🇿",
+        "alpha3" => "AZE"
     ],
     "Bahamas" => [
-        "Abbr" => "BS",
+        "alpha2" => "BS",
         "phone" => "+1242",
-        "emoji" => "🇧🇸"
+        "emoji" => "🇧🇸",
+        "alpha3" => "BHS"
     ],
     "Bahrain" => [
-        "Abbr" => "BH",
+        "alpha2" => "BH",
         "phone" => "+973",
-        "emoji" => "🇧🇭"
+        "emoji" => "🇧🇭",
+        "alpha3" => "BHR"
     ],
     "Bangladesh" => [
-        "Abbr" => "BD",
+        "alpha2" => "BD",
         "phone" => "+880",
-        "emoji" => "🇧🇩"
+        "emoji" => "🇧🇩",
+        "alpha3" => "BGD"
     ],
     "Barbados" => [
-        "Abbr" => "BB",
+        "alpha2" => "BB",
         "phone" => "+1246",
-        "emoji" => "🇧🇧"
+        "emoji" => "🇧🇧",
+        "alpha3" => "BRB"
     ],
     "Belarus" => [
-        "Abbr" => "BY",
+        "alpha2" => "BY",
         "phone" => "+375",
-        "emoji" => "🇧🇾"
+        "emoji" => "🇧🇾",
+        "alpha3" => "BLR"
     ],
     "Belgium" => [
-        "Abbr" => "BE",
+        "alpha2" => "BE",
         "phone" => "+32",
-        "emoji" => "🇧🇪"
+        "emoji" => "🇧🇪",
+        "alpha3" => "BEL"
     ],
     "Belize" => [
-        "Abbr" => "BZ",
+        "alpha2" => "BZ",
         "phone" => "+501",
-        "emoji" => "🇧🇿"
+        "emoji" => "🇧🇿",
+        "alpha3" => "BLZ"
     ],
     "Benin" => [
-        "Abbr" => "BJ",
+        "alpha2" => "BJ",
         "phone" => "+229",
-        "emoji" => "🇧🇯"
+        "emoji" => "🇧🇯",
+        "alpha3" => "BEN"
     ],
     "Bermuda" => [
-        "Abbr" => "BM",
+        "alpha2" => "BM",
         "phone" => "+1441",
-        "emoji" => "🇧🇲"
+        "emoji" => "🇧🇲",
+        "alpha3" => "BMU"
     ],
     "Bhutan" => [
-        "Abbr" => "BT",
+        "alpha2" => "BT",
         "phone" => "+975",
-        "emoji" => "🇧🇹"
+        "emoji" => "🇧🇹",
+        "alpha3" => "BTN"
     ],
     "Bolivia" => [
-        "Abbr" => "BO",
+        "alpha2" => "BO",
         "phone" => "+591",
-        "emoji" => "🇧🇴"
+        "emoji" => "🇧🇴",
+        "alpha3" => "BOL"
     ],
     "Bonaire" => [
-        "Abbr" => "BQ",
+        "alpha2" => "BQ",
         "phone" => "+5997",
-        "emoji" => "🇧🇶"
+        "emoji" => "🇧🇶",
+        "alpha3" => "BES"
     ],
     "Bosnia and Herzegovina" => [
-        "Abbr" => "BA",
+        "alpha2" => "BA",
         "phone" => "+387",
-        "emoji" => "🇧🇦"
+        "emoji" => "🇧🇦",
+        "alpha3" => "BIH"
     ],
     "Botswana" => [
-        "Abbr" => "BW",
+        "alpha2" => "BW",
         "phone" => "+267",
-        "emoji" => "🇧🇼"
+        "emoji" => "🇧🇼",
+        "alpha3" => "BWA"
     ],
     "Bouvet Island" => [
-        "Abbr" => "BV",
+        "alpha2" => "BV",
         "phone" => "+47",
-        "emoji" => "🇧🇻"
+        "emoji" => "🇧🇻",
+        "alpha3" => "BVT"
     ],
     "Brazil" => [
-        "Abbr" => "BR",
+        "alpha2" => "BR",
         "phone" => "+55",
-        "emoji" => "🇧🇷"
+        "emoji" => "🇧🇷",
+        "alpha3" => "BRA"
     ],
     "British Indian Ocean Territory" => [
-        "Abbr" => "IO",
+        "alpha2" => "IO",
         "phone" => "+246",
-        "emoji" => "🇮🇴"
+        "emoji" => "🇮🇴",
+        "alpha3" => "IOT"
     ],
     "British Virgin Islands" => [
-        "Abbr" => "VG",
+        "alpha2" => "VG",
         "phone" => "+1284",
-        "emoji" => "🇻🇬"
+        "emoji" => "🇻🇬",
+        "alpha3" => "VGB"
     ],
     "Brunei" => [
-        "Abbr" => "BN",
+        "alpha2" => "BN",
         "phone" => "+673",
-        "emoji" => "🇧🇳"
+        "emoji" => "🇧🇳",
+        "alpha3" => "BRN"
     ],
     "Bulgaria" => [
-        "Abbr" => "BG",
+        "alpha2" => "BG",
         "phone" => "+359",
-        "emoji" => "🇧🇬"
+        "emoji" => "🇧🇬",
+        "alpha3" => "BGR"
     ],
     "Burkina Faso" => [
-        "Abbr" => "BF",
+        "alpha2" => "BF",
         "phone" => "+226",
-        "emoji" => "🇧🇫"
+        "emoji" => "🇧🇫",
+        "alpha3" => "BFA"
     ],
     "Burundi" => [
-        "Abbr" => "BI",
+        "alpha2" => "BI",
         "phone" => "+257",
-        "emoji" => "🇧🇮"
+        "emoji" => "🇧🇮",
+        "alpha3" => "BDI"
     ],
     "Cambodia" => [
-        "Abbr" => "KH",
+        "alpha2" => "KH",
         "phone" => "+855",
-        "emoji" => "🇰🇭"
+        "emoji" => "🇰🇭",
+        "alpha3" => "KHM"
     ],
     "Cameroon" => [
-        "Abbr" => "CM",
+        "alpha2" => "CM",
         "phone" => "+237",
-        "emoji" => "🇨🇲"
+        "emoji" => "🇨🇲",
+        "alpha3" => "CMR"
     ],
     "Canada" => [
-        "Abbr" => "CA",
+        "alpha2" => "CA",
         "phone" => "+1",
-        "emoji" => "🇨🇦"
+        "emoji" => "🇨🇦",
+        "alpha3" => "CAN"
     ],
     "Cape Verde" => [
-        "Abbr" => "CV",
+        "alpha2" => "CV",
         "phone" => "+238",
-        "emoji" => "🇨🇻"
+        "emoji" => "🇨🇻",
+        "alpha3" => "CPV"
     ],
     "Cayman Islands" => [
-        "Abbr" => "KY",
+        "alpha2" => "KY",
         "phone" => "+1345",
-        "emoji" => "🇰🇾"
+        "emoji" => "🇰🇾",
+        "alpha3" => "CYM"
     ],
     "Central African Republic" => [
-        "Abbr" => "CF",
+        "alpha2" => "CF",
         "phone" => "+236",
-        "emoji" => "🇨🇫"
+        "emoji" => "🇨🇫",
+        "alpha3" => "CAF"
     ],
     "Chad" => [
-        "Abbr" => "TD",
+        "alpha2" => "TD",
         "phone" => "+235",
-        "emoji" => "🇹🇩"
+        "emoji" => "🇹🇩",
+        "alpha3" => "TCD"
     ],
     "Chile" => [
-        "Abbr" => "CL",
+        "alpha2" => "CL",
         "phone" => "+56",
-        "emoji" => "🇨🇱"
+        "emoji" => "🇨🇱",
+        "alpha3" => "CHL"
     ],
     "China" => [
-        "Abbr" => "CN",
+        "alpha2" => "CN",
         "phone" => "+86",
-        "emoji" => "🇨🇳"
+        "emoji" => "🇨🇳",
+        "alpha3" => "CHN"
     ],
     "Christmas Island" => [
-        "Abbr" => "CX",
+        "alpha2" => "CX",
         "phone" => "+61",
-        "emoji" => "🇨🇽"
+        "emoji" => "🇨🇽",
+        "alpha3" => "CXR"
     ],
     "Cocos [Keeling] Islands" => [
-        "Abbr" => "CC",
+        "alpha2" => "CC",
         "phone" => "+61",
-        "emoji" => "🇨🇨"
+        "emoji" => "🇨🇨",
+        "alpha3" => "CCK"
     ],
     "Colombia" => [
-        "Abbr" => "CO",
+        "alpha2" => "CO",
         "phone" => "+57",
-        "emoji" => "🇨🇴"
+        "emoji" => "🇨🇴",
+        "alpha3" => "COL"
     ],
     "Comoros" => [
-        "Abbr" => "KM",
+        "alpha2" => "KM",
         "phone" => "+269",
-        "emoji" => "🇰🇲"
+        "emoji" => "🇰🇲",
+        "alpha3" => "COM"
     ],
     "Cook Islands" => [
-        "Abbr" => "CK",
+        "alpha2" => "CK",
         "phone" => "+682",
-        "emoji" => "🇨🇰"
+        "emoji" => "🇨🇰",
+        "alpha3" => "COK"
     ],
     "Costa Rica" => [
-        "Abbr" => "CR",
+        "alpha2" => "CR",
         "phone" => "+506",
-        "emoji" => "🇨🇷"
+        "emoji" => "🇨🇷",
+        "alpha3" => "CRI"
     ],
     "Croatia" => [
-        "Abbr" => "HR",
+        "alpha2" => "HR",
         "phone" => "+385",
-        "emoji" => "🇭🇷"
+        "emoji" => "🇭🇷",
+        "alpha3" => "HRV"
     ],
     "Cuba" => [
-        "Abbr" => "CU",
+        "alpha2" => "CU",
         "phone" => "+53",
-        "emoji" => "🇨🇺"
+        "emoji" => "🇨🇺",
+        "alpha3" => "CUB"
     ],
     "Curacao" => [
-        "Abbr" => "CW",
+        "alpha2" => "CW",
         "phone" => "+5999",
-        "emoji" => "🇨🇼"
+        "emoji" => "🇨🇼",
+        "alpha3" => "CUW"
     ],
     "Cyprus" => [
-        "Abbr" => "CY",
+        "alpha2" => "CY",
         "phone" => "+357",
-        "emoji" => "🇨🇾"
+        "emoji" => "🇨🇾",
+        "alpha3" => "CYP"
     ],
     "Czech Republic" => [
-        "Abbr" => "CZ",
+        "alpha2" => "CZ",
         "phone" => "+420",
-        "emoji" => "🇨🇿"
+        "emoji" => "🇨🇿",
+        "alpha3" => "CZE"
     ],
     "Democratic Republic of the Congo" => [
-        "Abbr" => "CD",
+        "alpha2" => "CD",
         "phone" => "+243",
-        "emoji" => "🇨🇩"
+        "emoji" => "🇨🇩",
+        "alpha3" => "COD"
     ],
     "Denmark" => [
-        "Abbr" => "DK",
+        "alpha2" => "DK",
         "phone" => "+45",
-        "emoji" => "🇩🇰"
+        "emoji" => "🇩🇰",
+        "alpha3" => "DNK"
     ],
     "Djibouti" => [
-        "Abbr" => "DJ",
+        "alpha2" => "DJ",
         "phone" => "+253",
-        "emoji" => "🇩🇯"
+        "emoji" => "🇩🇯",
+        "alpha3" => "DJI"
     ],
     "Dominica" => [
-        "Abbr" => "DM",
+        "alpha2" => "DM",
         "phone" => "+1767",
-        "emoji" => "🇩🇲"
+        "emoji" => "🇩🇲",
+        "alpha3" => "DMA"
     ],
     "Dominican Republic" => [
-        "Abbr" => "DO",
+        "alpha2" => "DO",
         "phone" => "+1809,1829,1849",
-        "emoji" => "🇩🇴"
+        "emoji" => "🇩🇴",
+        "alpha3" => "DOM"
     ],
     "East Timor" => [
-        "Abbr" => "TL",
+        "alpha2" => "TL",
         "phone" => "+670",
-        "emoji" => "🇹🇱"
+        "emoji" => "🇹🇱",
+        "alpha3" => "TLS"
     ],
     "Ecuador" => [
-        "Abbr" => "EC",
+        "alpha2" => "EC",
         "phone" => "+593",
-        "emoji" => "🇪🇨"
+        "emoji" => "🇪🇨",
+        "alpha3" => "ECU"
     ],
     "Egypt" => [
-        "Abbr" => "EG",
+        "alpha2" => "EG",
         "phone" => "+20",
-        "emoji" => "🇪🇬"
+        "emoji" => "🇪🇬",
+        "alpha3" => "EGY"
     ],
     "El Salvador" => [
-        "Abbr" => "SV",
+        "alpha2" => "SV",
         "phone" => "+503",
-        "emoji" => "🇸🇻"
+        "emoji" => "🇸🇻",
+        "alpha3" => "SLV"
     ],
     "Equatorial Guinea" => [
-        "Abbr" => "GQ",
+        "alpha2" => "GQ",
         "phone" => "+240",
-        "emoji" => "🇬🇶"
+        "emoji" => "🇬🇶",
+        "alpha3" => "GNQ"
     ],
     "Eritrea" => [
-        "Abbr" => "ER",
+        "alpha2" => "ER",
         "phone" => "+291",
-        "emoji" => "🇪🇷"
+        "emoji" => "🇪🇷",
+        "alpha3" => "ERI"
     ],
     "Estonia" => [
-        "Abbr" => "EE",
+        "alpha2" => "EE",
         "phone" => "+372",
-        "emoji" => "🇪🇪"
+        "emoji" => "🇪🇪",
+        "alpha3" => "EST"
     ],
     "Ethiopia" => [
-        "Abbr" => "ET",
+        "alpha2" => "ET",
         "phone" => "+251",
-        "emoji" => "🇪🇹"
+        "emoji" => "🇪🇹",
+        "alpha3" => "ETH"
     ],
     "Falkland Islands" => [
-        "Abbr" => "FK",
+        "alpha2" => "FK",
         "phone" => "+500",
-        "emoji" => "🇫🇰"
+        "emoji" => "🇫🇰",
+        "alpha3" => "FLK"
     ],
     "Faroe Islands" => [
-        "Abbr" => "FO",
+        "alpha2" => "FO",
         "phone" => "+298",
-        "emoji" => "🇫🇴"
+        "emoji" => "🇫🇴",
+        "alpha3" => "FRO"
     ],
     "Fiji" => [
-        "Abbr" => "FJ",
+        "alpha2" => "FJ",
         "phone" => "+679",
-        "emoji" => "🇫🇯"
+        "emoji" => "🇫🇯",
+        "alpha3" => "FJI"
     ],
     "Finland" => [
-        "Abbr" => "FI",
+        "alpha2" => "FI",
         "phone" => "+358",
-        "emoji" => "🇫🇮"
+        "emoji" => "🇫🇮",
+        "alpha3" => "FIN"
     ],
     "France" => [
-        "Abbr" => "FR",
+        "alpha2" => "FR",
         "phone" => "+33",
-        "emoji" => "🇫🇷"
+        "emoji" => "🇫🇷",
+        "alpha3" => "FRA"
     ],
     "French Guiana" => [
-        "Abbr" => "GF",
+        "alpha2" => "GF",
         "phone" => "+594",
-        "emoji" => "🇬🇫"
+        "emoji" => "🇬🇫",
+        "alpha3" => "GUF"
     ],
     "French Polynesia" => [
-        "Abbr" => "PF",
+        "alpha2" => "PF",
         "phone" => "+689",
-        "emoji" => "🇵🇫"
+        "emoji" => "🇵🇫",
+        "alpha3" => "PYF"
     ],
     "French Southern Territories" => [
-        "Abbr" => "TF",
+        "alpha2" => "TF",
         "phone" => "+262",
-        "emoji" => "🇹🇫"
+        "emoji" => "🇹🇫",
+        "alpha3" => "ATF"
     ],
     "Gabon" => [
-        "Abbr" => "GA",
+        "alpha2" => "GA",
         "phone" => "+241",
-        "emoji" => "🇬🇦"
+        "emoji" => "🇬🇦",
+        "alpha3" => "GAB"
     ],
     "Gambia" => [
-        "Abbr" => "GM",
+        "alpha2" => "GM",
         "phone" => "+220",
-        "emoji" => "🇬🇲"
+        "emoji" => "🇬🇲",
+        "alpha3" => "GMB"
     ],
     "Georgia" => [
-        "Abbr" => "GE",
+        "alpha2" => "GE",
         "phone" => "+995",
-        "emoji" => "🇬🇪"
+        "emoji" => "🇬🇪",
+        "alpha3" => "GEO"
     ],
     "Germany" => [
-        "Abbr" => "DE",
+        "alpha2" => "DE",
         "phone" => "+49",
-        "emoji" => "🇩🇪"
+        "emoji" => "🇩🇪",
+        "alpha3" => "DEU"
     ],
     "Ghana" => [
-        "Abbr" => "GH",
+        "alpha2" => "GH",
         "phone" => "+233",
-        "emoji" => "🇬🇭"
+        "emoji" => "🇬🇭",
+        "alpha3" => "GHA"
     ],
     "Gibraltar" => [
-        "Abbr" => "GI",
+        "alpha2" => "GI",
         "phone" => "+350",
-        "emoji" => "🇬🇮"
+        "emoji" => "🇬🇮",
+        "alpha3" => "GIB"
     ],
     "Greece" => [
-        "Abbr" => "GR",
+        "alpha2" => "GR",
         "phone" => "+30",
-        "emoji" => "🇬🇷"
+        "emoji" => "🇬🇷",
+        "alpha3" => "GRC"
     ],
     "Greenland" => [
-        "Abbr" => "GL",
+        "alpha2" => "GL",
         "phone" => "+299",
-        "emoji" => "🇬🇱"
+        "emoji" => "🇬🇱",
+        "alpha3" => "GRL"
     ],
     "Grenada" => [
-        "Abbr" => "GD",
+        "alpha2" => "GD",
         "phone" => "+1473",
-        "emoji" => "🇬🇩"
+        "emoji" => "🇬🇩",
+        "alpha3" => "GRD"
     ],
     "Guadeloupe" => [
-        "Abbr" => "GP",
+        "alpha2" => "GP",
         "phone" => "+590",
-        "emoji" => "🇬🇵"
+        "emoji" => "🇬🇵",
+        "alpha3" => "GLP"
     ],
     "Guam" => [
-        "Abbr" => "GU",
+        "alpha2" => "GU",
         "phone" => "+1671",
-        "emoji" => "🇬🇺"
+        "emoji" => "🇬🇺",
+        "alpha3" => "GUM"
     ],
     "Guatemala" => [
-        "Abbr" => "GT",
+        "alpha2" => "GT",
         "phone" => "+502",
-        "emoji" => "🇬🇹"
+        "emoji" => "🇬🇹",
+        "alpha3" => "GTM"
     ],
     "Guernsey" => [
-        "Abbr" => "GG",
+        "alpha2" => "GG",
         "phone" => "+44",
-        "emoji" => "🇬🇬"
+        "emoji" => "🇬🇬",
+        "alpha3" => "GGY"
     ],
     "Guinea" => [
-        "Abbr" => "GN",
+        "alpha2" => "GN",
         "phone" => "+224",
-        "emoji" => "🇬🇳"
+        "emoji" => "🇬🇳",
+        "alpha3" => "GIN"
     ],
     "Guinea-Bissau" => [
-        "Abbr" => "GW",
+        "alpha2" => "GW",
         "phone" => "+245",
-        "emoji" => "🇬🇼"
+        "emoji" => "🇬🇼",
+        "alpha3" => "GNB"
     ],
     "Guyana" => [
-        "Abbr" => "GY",
+        "alpha2" => "GY",
         "phone" => "+592",
-        "emoji" => "🇬🇾"
+        "emoji" => "🇬🇾",
+        "alpha3" => "GUY"
     ],
     "Haiti" => [
-        "Abbr" => "HT",
+        "alpha2" => "HT",
         "phone" => "+509",
-        "emoji" => "🇭🇹"
+        "emoji" => "🇭🇹",
+        "alpha3" => "HTI"
     ],
     "Heard Island and McDonald Islands" => [
-        "Abbr" => "HM",
+        "alpha2" => "HM",
         "phone" => "+61",
-        "emoji" => "🇭🇲"
+        "emoji" => "🇭🇲",
+        "alpha3" => "HMD"
     ],
     "Honduras" => [
-        "Abbr" => "HN",
+        "alpha2" => "HN",
         "phone" => "+504",
-        "emoji" => "🇭🇳"
+        "emoji" => "🇭🇳",
+        "alpha3" => "HND"
     ],
     "Hong Kong" => [
-        "Abbr" => "HK",
+        "alpha2" => "HK",
         "phone" => "+852",
-        "emoji" => "🇭🇰"
+        "emoji" => "🇭🇰",
+        "alpha3" => "HKG"
     ],
     "Hungary" => [
-        "Abbr" => "HU",
+        "alpha2" => "HU",
         "phone" => "+36",
-        "emoji" => "🇭🇺"
+        "emoji" => "🇭🇺",
+        "alpha3" => "HUN"
     ],
     "Iceland" => [
-        "Abbr" => "IS",
+        "alpha2" => "IS",
         "phone" => "+354",
-        "emoji" => "🇮🇸"
+        "emoji" => "🇮🇸",
+        "alpha3" => "ISL"
     ],
     "India" => [
-        "Abbr" => "IN",
+        "alpha2" => "IN",
         "phone" => "+91",
-        "emoji" => "🇮🇳"
+        "emoji" => "🇮🇳",
+        "alpha3" => "IND"
     ],
     "Indonesia" => [
-        "Abbr" => "ID",
+        "alpha2" => "ID",
         "phone" => "+62",
-        "emoji" => "🇮🇩"
+        "emoji" => "🇮🇩",
+        "alpha3" => "IDN"
     ],
     "Iran" => [
-        "Abbr" => "IR",
+        "alpha2" => "IR",
         "phone" => "+98",
-        "emoji" => "🇮🇷"
+        "emoji" => "🇮🇷",
+        "alpha3" => "IRN"
     ],
     "Iraq" => [
-        "Abbr" => "IQ",
+        "alpha2" => "IQ",
         "phone" => "+964",
-        "emoji" => "🇮🇶"
+        "emoji" => "🇮🇶",
+        "alpha3" => "IRQ"
     ],
     "Ireland" => [
-        "Abbr" => "IE",
+        "alpha2" => "IE",
         "phone" => "+353",
-        "emoji" => "🇮🇪"
+        "emoji" => "🇮🇪",
+        "alpha3" => "IRL"
     ],
     "Isle of Man" => [
-        "Abbr" => "IM",
+        "alpha2" => "IM",
         "phone" => "+44",
-        "emoji" => "🇮🇲"
+        "emoji" => "🇮🇲",
+        "alpha3" => "IMN"
     ],
     "Israel" => [
-        "Abbr" => "IL",
+        "alpha2" => "IL",
         "phone" => "+972",
-        "emoji" => "🇮🇱"
+        "emoji" => "🇮🇱",
+        "alpha3" => "ISR"
     ],
     "Italy" => [
-        "Abbr" => "IT",
+        "alpha2" => "IT",
         "phone" => "+39",
-        "emoji" => "🇮🇹"
+        "emoji" => "🇮🇹",
+        "alpha3" => "ITA"
     ],
     "Ivory Coast" => [
-        "Abbr" => "CI",
+        "alpha2" => "CI",
         "phone" => "+225",
-        "emoji" => "🇨🇮"
+        "emoji" => "🇨🇮",
+        "alpha3" => "CIV"
     ],
     "Jamaica" => [
-        "Abbr" => "JM",
+        "alpha2" => "JM",
         "phone" => "+1876",
-        "emoji" => "🇯🇲"
+        "emoji" => "🇯🇲",
+        "alpha3" => "JAM"
     ],
     "Japan" => [
-        "Abbr" => "JP",
+        "alpha2" => "JP",
         "phone" => "+81",
-        "emoji" => "🇯🇵"
+        "emoji" => "🇯🇵",
+        "alpha3" => "JPN"
     ],
     "Jersey" => [
-        "Abbr" => "JE",
+        "alpha2" => "JE",
         "phone" => "+44",
-        "emoji" => "🇯🇪"
+        "emoji" => "🇯🇪",
+        "alpha3" => "JEY"
     ],
     "Jordan" => [
-        "Abbr" => "JO",
+        "alpha2" => "JO",
         "phone" => "+962",
-        "emoji" => "🇯🇴"
+        "emoji" => "🇯🇴",
+        "alpha3" => "JOR"
     ],
     "Kazakhstan" => [
-        "Abbr" => "KZ",
+        "alpha2" => "KZ",
         "phone" => "+76,77",
-        "emoji" => "🇰🇿"
+        "emoji" => "🇰🇿",
+        "alpha3" => "KAZ"
     ],
     "Kenya" => [
-        "Abbr" => "KE",
+        "alpha2" => "KE",
         "phone" => "+254",
-        "emoji" => "🇰🇪"
+        "emoji" => "🇰🇪",
+        "alpha3" => "KEN"
     ],
     "Kiribati" => [
-        "Abbr" => "KI",
+        "alpha2" => "KI",
         "phone" => "+686",
-        "emoji" => "🇰🇮"
+        "emoji" => "🇰🇮",
+        "alpha3" => "KIR"
     ],
     "Kosovo" => [
-        "Abbr" => "XK",
-        "phone" => "+377,381,383,386",
-        "emoji" => "🇽🇰"
+        "alpha2" => "XK",
+        "phone" => "+383",
+        "emoji" => "🇽🇰",
+        "alpha3" => "RKS"
     ],
     "Kuwait" => [
-        "Abbr" => "KW",
+        "alpha2" => "KW",
         "phone" => "+965",
-        "emoji" => "🇰🇼"
+        "emoji" => "🇰🇼",
+        "alpha3" => "KWT"
     ],
     "Kyrgyzstan" => [
-        "Abbr" => "KG",
+        "alpha2" => "KG",
         "phone" => "+996",
-        "emoji" => "🇰🇬"
+        "emoji" => "🇰🇬",
+        "alpha3" => "KGZ"
     ],
     "Laos" => [
-        "Abbr" => "LA",
+        "alpha2" => "LA",
         "phone" => "+856",
-        "emoji" => "🇱🇦"
+        "emoji" => "🇱🇦",
+        "alpha3" => "LAO"
     ],
     "Latvia" => [
-        "Abbr" => "LV",
+        "alpha2" => "LV",
         "phone" => "+371",
-        "emoji" => "🇱🇻"
+        "emoji" => "🇱🇻",
+        "alpha3" => "LVA"
     ],
     "Lebanon" => [
-        "Abbr" => "LB",
+        "alpha2" => "LB",
         "phone" => "+961",
-        "emoji" => "🇱🇧"
+        "emoji" => "🇱🇧",
+        "alpha3" => "LBN"
     ],
     "Lesotho" => [
-        "Abbr" => "LS",
+        "alpha2" => "LS",
         "phone" => "+266",
-        "emoji" => "🇱🇸"
+        "emoji" => "🇱🇸",
+        "alpha3" => "LSO"
     ],
     "Liberia" => [
-        "Abbr" => "LR",
+        "alpha2" => "LR",
         "phone" => "+231",
-        "emoji" => "🇱🇷"
+        "emoji" => "🇱🇷",
+        "alpha3" => "LBR"
     ],
     "Libya" => [
-        "Abbr" => "LY",
+        "alpha2" => "LY",
         "phone" => "+218",
-        "emoji" => "🇱🇾"
+        "emoji" => "🇱🇾",
+        "alpha3" => "LBY"
     ],
     "Liechtenstein" => [
-        "Abbr" => "LI",
+        "alpha2" => "LI",
         "phone" => "+423",
-        "emoji" => "🇱🇮"
+        "emoji" => "🇱🇮",
+        "alpha3" => "LIE"
     ],
     "Lithuania" => [
-        "Abbr" => "LT",
+        "alpha2" => "LT",
         "phone" => "+370",
-        "emoji" => "🇱🇹"
+        "emoji" => "🇱🇹",
+        "alpha3" => "LTU"
     ],
     "Luxembourg" => [
-        "Abbr" => "LU",
+        "alpha2" => "LU",
         "phone" => "+352",
-        "emoji" => "🇱🇺"
+        "emoji" => "🇱🇺",
+        "alpha3" => "LUX"
     ],
     "Macao" => [
-        "Abbr" => "MO",
+        "alpha2" => "MO",
         "phone" => "+853",
-        "emoji" => "🇲🇴"
+        "emoji" => "🇲🇴",
+        "alpha3" => "MAC"
     ],
     "Madagascar" => [
-        "Abbr" => "MG",
+        "alpha2" => "MG",
         "phone" => "+261",
-        "emoji" => "🇲🇬"
+        "emoji" => "🇲🇬",
+        "alpha3" => "MDG"
     ],
     "Malawi" => [
-        "Abbr" => "MW",
+        "alpha2" => "MW",
         "phone" => "+265",
-        "emoji" => "🇲🇼"
+        "emoji" => "🇲🇼",
+        "alpha3" => "MWI"
     ],
     "Malaysia" => [
-        "Abbr" => "MY",
+        "alpha2" => "MY",
         "phone" => "+60",
-        "emoji" => "🇲🇾"
+        "emoji" => "🇲🇾",
+        "alpha3" => "MYS"
     ],
     "Maldives" => [
-        "Abbr" => "MV",
+        "alpha2" => "MV",
         "phone" => "+960",
-        "emoji" => "🇲🇻"
+        "emoji" => "🇲🇻",
+        "alpha3" => "MDV"
     ],
     "Mali" => [
-        "Abbr" => "ML",
+        "alpha2" => "ML",
         "phone" => "+223",
-        "emoji" => "🇲🇱"
+        "emoji" => "🇲🇱",
+        "alpha3" => "MLI"
     ],
     "Malta" => [
-        "Abbr" => "MT",
+        "alpha2" => "MT",
         "phone" => "+356",
-        "emoji" => "🇲🇹"
+        "emoji" => "🇲🇹",
+        "alpha3" => "MLT"
     ],
     "Marshall Islands" => [
-        "Abbr" => "MH",
+        "alpha2" => "MH",
         "phone" => "+692",
-        "emoji" => "🇲🇭"
+        "emoji" => "🇲🇭",
+        "alpha3" => "MHL"
     ],
     "Martinique" => [
-        "Abbr" => "MQ",
+        "alpha2" => "MQ",
         "phone" => "+596",
-        "emoji" => "🇲🇶"
+        "emoji" => "🇲🇶",
+        "alpha3" => "MTQ"
     ],
     "Mauritania" => [
-        "Abbr" => "MR",
+        "alpha2" => "MR",
         "phone" => "+222",
-        "emoji" => "🇲🇷"
+        "emoji" => "🇲🇷",
+        "alpha3" => "MRT"
     ],
     "Mauritius" => [
-        "Abbr" => "MU",
+        "alpha2" => "MU",
         "phone" => "+230",
-        "emoji" => "🇲🇺"
+        "emoji" => "🇲🇺",
+        "alpha3" => "MUS"
     ],
     "Mayotte" => [
-        "Abbr" => "YT",
+        "alpha2" => "YT",
         "phone" => "+262",
-        "emoji" => "🇾🇹"
+        "emoji" => "🇾🇹",
+        "alpha3" => "MYT"
     ],
     "Mexico" => [
-        "Abbr" => "MX",
+        "alpha2" => "MX",
         "phone" => "+52",
-        "emoji" => "🇲🇽"
+        "emoji" => "🇲🇽",
+        "alpha3" => "MEX"
     ],
     "Micronesia" => [
-        "Abbr" => "FM",
+        "alpha2" => "FM",
         "phone" => "+691",
-        "emoji" => "🇫🇲"
+        "emoji" => "🇫🇲",
+        "alpha3" => "FSM"
     ],
     "Moldova" => [
-        "Abbr" => "MD",
+        "alpha2" => "MD",
         "phone" => "+373",
-        "emoji" => "🇲🇩"
+        "emoji" => "🇲🇩",
+        "alpha3" => "MDA"
     ],
     "Monaco" => [
-        "Abbr" => "MC",
+        "alpha2" => "MC",
         "phone" => "+377",
-        "emoji" => "🇲🇨"
+        "emoji" => "🇲🇨",
+        "alpha3" => "MCO"
     ],
     "Mongolia" => [
-        "Abbr" => "MN",
+        "alpha2" => "MN",
         "phone" => "+976",
-        "emoji" => "🇲🇳"
+        "emoji" => "🇲🇳",
+        "alpha3" => "MNG"
     ],
     "Montenegro" => [
-        "Abbr" => "ME",
+        "alpha2" => "ME",
         "phone" => "+382",
-        "emoji" => "🇲🇪"
+        "emoji" => "🇲🇪",
+        "alpha3" => "MNE"
     ],
     "Montserrat" => [
-        "Abbr" => "MS",
+        "alpha2" => "MS",
         "phone" => "+1664",
-        "emoji" => "🇲🇸"
+        "emoji" => "🇲🇸",
+        "alpha3" => "MSR"
     ],
     "Morocco" => [
-        "Abbr" => "MA",
+        "alpha2" => "MA",
         "phone" => "+212",
-        "emoji" => "🇲🇦"
+        "emoji" => "🇲🇦",
+        "alpha3" => "MAR"
     ],
     "Mozambique" => [
-        "Abbr" => "MZ",
+        "alpha2" => "MZ",
         "phone" => "+258",
-        "emoji" => "🇲🇿"
+        "emoji" => "🇲🇿",
+        "alpha3" => "MOZ"
     ],
     "Myanmar [Burma]" => [
-        "Abbr" => "MM",
+        "alpha2" => "MM",
         "phone" => "+95",
-        "emoji" => "🇲🇲"
+        "emoji" => "🇲🇲",
+        "alpha3" => "MMR"
     ],
     "Namibia" => [
-        "Abbr" => "NA",
+        "alpha2" => "NA",
         "phone" => "+264",
-        "emoji" => "🇳🇦"
+        "emoji" => "🇳🇦",
+        "alpha3" => "NAM"
     ],
     "Nauru" => [
-        "Abbr" => "NR",
+        "alpha2" => "NR",
         "phone" => "+674",
-        "emoji" => "🇳🇷"
+        "emoji" => "🇳🇷",
+        "alpha3" => "NRU"
     ],
     "Nepal" => [
-        "Abbr" => "NP",
+        "alpha2" => "NP",
         "phone" => "+977",
-        "emoji" => "🇳🇵"
+        "emoji" => "🇳🇵",
+        "alpha3" => "NPL"
     ],
     "Netherlands" => [
-        "Abbr" => "NL",
+        "alpha2" => "NL",
         "phone" => "+31",
-        "emoji" => "🇳🇱"
+        "emoji" => "🇳🇱",
+        "alpha3" => "NLD"
     ],
     "New Caledonia" => [
-        "Abbr" => "NC",
+        "alpha2" => "NC",
         "phone" => "+687",
-        "emoji" => "🇳🇨"
+        "emoji" => "🇳🇨",
+        "alpha3" => "NCL"
     ],
     "New Zealand" => [
-        "Abbr" => "NZ",
+        "alpha2" => "NZ",
         "phone" => "+64",
-        "emoji" => "🇳🇿"
+        "emoji" => "🇳🇿",
+        "alpha3" => "NZL"
     ],
     "Nicaragua" => [
-        "Abbr" => "NI",
+        "alpha2" => "NI",
         "phone" => "+505",
-        "emoji" => "🇳🇮"
+        "emoji" => "🇳🇮",
+        "alpha3" => "NIC"
     ],
     "Niger" => [
-        "Abbr" => "NE",
+        "alpha2" => "NE",
         "phone" => "+227",
-        "emoji" => "🇳🇪"
+        "emoji" => "🇳🇪",
+        "alpha3" => "NER"
     ],
     "Nigeria" => [
-        "Abbr" => "NG",
+        "alpha2" => "NG",
         "phone" => "+234",
-        "emoji" => "🇳🇬"
+        "emoji" => "🇳🇬",
+        "alpha3" => "NGA"
     ],
     "Niue" => [
-        "Abbr" => "NU",
+        "alpha2" => "NU",
         "phone" => "+683",
-        "emoji" => "🇳🇺"
+        "emoji" => "🇳🇺",
+        "alpha3" => "NIU"
     ],
     "Norfolk Island" => [
-        "Abbr" => "NF",
+        "alpha2" => "NF",
         "phone" => "+672",
-        "emoji" => "🇳🇫"
+        "emoji" => "🇳🇫",
+        "alpha3" => "NFK"
     ],
     "North Korea" => [
-        "Abbr" => "KP",
+        "alpha2" => "KP",
         "phone" => "+850",
-        "emoji" => "🇰🇵"
+        "emoji" => "🇰🇵",
+        "alpha3" => "PRK"
     ],
     "North Macedonia" => [
-        "Abbr" => "MK",
+        "alpha2" => "MK",
         "phone" => "+389",
-        "emoji" => "🇲🇰"
+        "emoji" => "🇲🇰",
+        "alpha3" => "MKD"
     ],
     "Northern Mariana Islands" => [
-        "Abbr" => "MP",
+        "alpha2" => "MP",
         "phone" => "+1670",
-        "emoji" => "🇲🇵"
+        "emoji" => "🇲🇵",
+        "alpha3" => "MNP"
     ],
     "Norway" => [
-        "Abbr" => "NO",
+        "alpha2" => "NO",
         "phone" => "+47",
-        "emoji" => "🇳🇴"
+        "emoji" => "🇳🇴",
+        "alpha3" => "NOR"
     ],
     "Oman" => [
-        "Abbr" => "OM",
+        "alpha2" => "OM",
         "phone" => "+968",
-        "emoji" => "🇴🇲"
+        "emoji" => "🇴🇲",
+        "alpha3" => "OMN"
     ],
     "Pakistan" => [
-        "Abbr" => "PK",
+        "alpha2" => "PK",
         "phone" => "+92",
-        "emoji" => "🇵🇰"
+        "emoji" => "🇵🇰",
+        "alpha3" => "PAK"
     ],
     "Palau" => [
-        "Abbr" => "PW",
+        "alpha2" => "PW",
         "phone" => "+680",
-        "emoji" => "🇵🇼"
+        "emoji" => "🇵🇼",
+        "alpha3" => "PLW"
     ],
     "Palestine" => [
-        "Abbr" => "PS",
+        "alpha2" => "PS",
         "phone" => "+970",
-        "emoji" => "🇵🇸"
+        "emoji" => "🇵🇸",
+        "alpha3" => "PSE"
     ],
     "Panama" => [
-        "Abbr" => "PA",
+        "alpha2" => "PA",
         "phone" => "+507",
-        "emoji" => "🇵🇦"
+        "emoji" => "🇵🇦",
+        "alpha3" => "PAN"
     ],
     "Papua New Guinea" => [
-        "Abbr" => "PG",
+        "alpha2" => "PG",
         "phone" => "+675",
-        "emoji" => "🇵🇬"
+        "emoji" => "🇵🇬",
+        "alpha3" => "PNG"
     ],
     "Paraguay" => [
-        "Abbr" => "PY",
+        "alpha2" => "PY",
         "phone" => "+595",
-        "emoji" => "🇵🇾"
+        "emoji" => "🇵🇾",
+        "alpha3" => "PRY"
     ],
     "Peru" => [
-        "Abbr" => "PE",
+        "alpha2" => "PE",
         "phone" => "+51",
-        "emoji" => "🇵🇪"
+        "emoji" => "🇵🇪",
+        "alpha3" => "PER"
     ],
     "Philippines" => [
-        "Abbr" => "PH",
+        "alpha2" => "PH",
         "phone" => "+63",
-        "emoji" => "🇵🇭"
+        "emoji" => "🇵🇭",
+        "alpha3" => "PHL"
     ],
     "Pitcairn Islands" => [
-        "Abbr" => "PN",
+        "alpha2" => "PN",
         "phone" => "+64",
-        "emoji" => "🇵🇳"
+        "emoji" => "🇵🇳",
+        "alpha3" => "PCN"
     ],
     "Poland" => [
-        "Abbr" => "PL",
+        "alpha2" => "PL",
         "phone" => "+48",
-        "emoji" => "🇵🇱"
+        "emoji" => "🇵🇱",
+        "alpha3" => "POL"
     ],
     "Portugal" => [
-        "Abbr" => "PT",
+        "alpha2" => "PT",
         "phone" => "+351",
-        "emoji" => "🇵🇹"
+        "emoji" => "🇵🇹",
+        "alpha3" => "PRT"
     ],
     "Puerto Rico" => [
-        "Abbr" => "PR",
+        "alpha2" => "PR",
         "phone" => "+1787,1939",
-        "emoji" => "🇵🇷"
+        "emoji" => "🇵🇷",
+        "alpha3" => "PRI"
     ],
     "Qatar" => [
-        "Abbr" => "QA",
+        "alpha2" => "QA",
         "phone" => "+974",
-        "emoji" => "🇶🇦"
+        "emoji" => "🇶🇦",
+        "alpha3" => "QAT"
     ],
     "Republic of the Congo" => [
-        "Abbr" => "CG",
+        "alpha2" => "CG",
         "phone" => "+242",
-        "emoji" => "🇨🇬"
+        "emoji" => "🇨🇬",
+        "alpha3" => "COG"
     ],
     "Romania" => [
-        "Abbr" => "RO",
+        "alpha2" => "RO",
         "phone" => "+40",
-        "emoji" => "🇷🇴"
+        "emoji" => "🇷🇴",
+        "alpha3" => "ROU"
     ],
     "Russia" => [
-        "Abbr" => "RU",
+        "alpha2" => "RU",
         "phone" => "+7",
-        "emoji" => "🇷🇺"
+        "emoji" => "🇷🇺",
+        "alpha3" => "RUS"
     ],
     "Rwanda" => [
-        "Abbr" => "RW",
+        "alpha2" => "RW",
         "phone" => "+250",
-        "emoji" => "🇷🇼"
+        "emoji" => "🇷🇼",
+        "alpha3" => "RWA"
     ],
     "Réunion" => [
-        "Abbr" => "RE",
+        "alpha2" => "RE",
         "phone" => "+262",
-        "emoji" => "🇷🇪"
+        "emoji" => "🇷🇪",
+        "alpha3" => "REU"
     ],
     "Saint Barthélemy" => [
-        "Abbr" => "BL",
+        "alpha2" => "BL",
         "phone" => "+590",
-        "emoji" => "🇧🇱"
+        "emoji" => "🇧🇱",
+        "alpha3" => "BLM"
     ],
     "Saint Helena" => [
-        "Abbr" => "SH",
+        "alpha2" => "SH",
         "phone" => "+290",
-        "emoji" => "🇸🇭"
+        "emoji" => "🇸🇭",
+        "alpha3" => "SHN"
     ],
     "Saint Kitts and Nevis" => [
-        "Abbr" => "KN",
+        "alpha2" => "KN",
         "phone" => "+1869",
-        "emoji" => "🇰🇳"
+        "emoji" => "🇰🇳",
+        "alpha3" => "KNA"
     ],
     "Saint Lucia" => [
-        "Abbr" => "LC",
+        "alpha2" => "LC",
         "phone" => "+1758",
-        "emoji" => "🇱🇨"
+        "emoji" => "🇱🇨",
+        "alpha3" => "LCA"
     ],
     "Saint Martin" => [
-        "Abbr" => "MF",
+        "alpha2" => "MF",
         "phone" => "+590",
-        "emoji" => "🇲🇫"
+        "emoji" => "🇲🇫",
+        "alpha3" => "MAF"
     ],
     "Saint Pierre and Miquelon" => [
-        "Abbr" => "PM",
+        "alpha2" => "PM",
         "phone" => "+508",
-        "emoji" => "🇵🇲"
+        "emoji" => "🇵🇲",
+        "alpha3" => "SPM"
     ],
     "Saint Vincent and the Grenadines" => [
-        "Abbr" => "VC",
+        "alpha2" => "VC",
         "phone" => "+1784",
-        "emoji" => "🇻🇨"
+        "emoji" => "🇻🇨",
+        "alpha3" => "VCT"
     ],
     "Samoa" => [
-        "Abbr" => "WS",
+        "alpha2" => "WS",
         "phone" => "+685",
-        "emoji" => "🇼🇸"
+        "emoji" => "🇼🇸",
+        "alpha3" => "WSM"
     ],
     "San Marino" => [
-        "Abbr" => "SM",
+        "alpha2" => "SM",
         "phone" => "+378",
-        "emoji" => "🇸🇲"
+        "emoji" => "🇸🇲",
+        "alpha3" => "SMR"
     ],
     "Saudi Arabia" => [
-        "Abbr" => "SA",
+        "alpha2" => "SA",
         "phone" => "+966",
-        "emoji" => "🇸🇦"
+        "emoji" => "🇸🇦",
+        "alpha3" => "SAU"
     ],
     "Senegal" => [
-        "Abbr" => "SN",
+        "alpha2" => "SN",
         "phone" => "+221",
-        "emoji" => "🇸🇳"
+        "emoji" => "🇸🇳",
+        "alpha3" => "SEN"
     ],
     "Serbia" => [
-        "Abbr" => "RS",
+        "alpha2" => "RS",
         "phone" => "+381",
-        "emoji" => "🇷🇸"
+        "emoji" => "🇷🇸",
+        "alpha3" => "SRB"
     ],
     "Seychelles" => [
-        "Abbr" => "SC",
+        "alpha2" => "SC",
         "phone" => "+248",
-        "emoji" => "🇸🇨"
+        "emoji" => "🇸🇨",
+        "alpha3" => "SYC"
     ],
     "Sierra Leone" => [
-        "Abbr" => "SL",
+        "alpha2" => "SL",
         "phone" => "+232",
-        "emoji" => "🇸🇱"
+        "emoji" => "🇸🇱",
+        "alpha3" => "SLE"
     ],
     "Singapore" => [
-        "Abbr" => "SG",
+        "alpha2" => "SG",
         "phone" => "+65",
-        "emoji" => "🇸🇬"
+        "emoji" => "🇸🇬",
+        "alpha3" => "SGP"
     ],
     "Sint Maarten" => [
-        "Abbr" => "SX",
+        "alpha2" => "SX",
         "phone" => "+1721",
-        "emoji" => "🇸🇽"
+        "emoji" => "🇸🇽",
+        "alpha3" => "SXM"
     ],
     "Slovakia" => [
-        "Abbr" => "SK",
+        "alpha2" => "SK",
         "phone" => "+421",
-        "emoji" => "🇸🇰"
+        "emoji" => "🇸🇰",
+        "alpha3" => "SVK"
     ],
     "Slovenia" => [
-        "Abbr" => "SI",
+        "alpha2" => "SI",
         "phone" => "+386",
-        "emoji" => "🇸🇮"
+        "emoji" => "🇸🇮",
+        "alpha3" => "SVN"
     ],
     "Solomon Islands" => [
-        "Abbr" => "SB",
+        "alpha2" => "SB",
         "phone" => "+677",
-        "emoji" => "🇸🇧"
+        "emoji" => "🇸🇧",
+        "alpha3" => "SLB"
     ],
     "Somalia" => [
-        "Abbr" => "SO",
+        "alpha2" => "SO",
         "phone" => "+252",
-        "emoji" => "🇸🇴"
+        "emoji" => "🇸🇴",
+        "alpha3" => "SOM"
     ],
     "South Africa" => [
-        "Abbr" => "ZA",
+        "alpha2" => "ZA",
         "phone" => "+27",
-        "emoji" => "🇿🇦"
+        "emoji" => "🇿🇦",
+        "alpha3" => "ZAF"
     ],
     "South Georgia and the South Sandwich Islands" => [
-        "Abbr" => "GS",
+        "alpha2" => "GS",
         "phone" => "+500",
-        "emoji" => "🇬🇸"
+        "emoji" => "🇬🇸",
+        "alpha3" => "SGS"
     ],
     "South Korea" => [
-        "Abbr" => "KR",
+        "alpha2" => "KR",
         "phone" => "+82",
-        "emoji" => "🇰🇷"
+        "emoji" => "🇰🇷",
+        "alpha3" => "KOR"
     ],
     "South Sudan" => [
-        "Abbr" => "SS",
+        "alpha2" => "SS",
         "phone" => "+211",
-        "emoji" => "🇸🇸"
+        "emoji" => "🇸🇸",
+        "alpha3" => "SSD"
     ],
     "Spain" => [
-        "Abbr" => "ES",
+        "alpha2" => "ES",
         "phone" => "+34",
-        "emoji" => "🇪🇸"
+        "emoji" => "🇪🇸",
+        "alpha3" => "ESP"
     ],
     "Sri Lanka" => [
-        "Abbr" => "LK",
+        "alpha2" => "LK",
         "phone" => "+94",
-        "emoji" => "🇱🇰"
+        "emoji" => "🇱🇰",
+        "alpha3" => "LKA"
     ],
     "Sudan" => [
-        "Abbr" => "SD",
+        "alpha2" => "SD",
         "phone" => "+249",
-        "emoji" => "🇸🇩"
+        "emoji" => "🇸🇩",
+        "alpha3" => "SDN"
     ],
     "Suriname" => [
-        "Abbr" => "SR",
+        "alpha2" => "SR",
         "phone" => "+597",
-        "emoji" => "🇸🇷"
+        "emoji" => "🇸🇷",
+        "alpha3" => "SUR"
     ],
     "Svalbard and Jan Mayen" => [
-        "Abbr" => "SJ",
+        "alpha2" => "SJ",
         "phone" => "+4779",
-        "emoji" => "🇸🇯"
+        "emoji" => "🇸🇯",
+        "alpha3" => "SJM"
     ],
     "Swaziland" => [
-        "Abbr" => "SZ",
+        "alpha2" => "SZ",
         "phone" => "+268",
-        "emoji" => "🇸🇿"
+        "emoji" => "🇸🇿",
+        "alpha3" => "SWZ"
     ],
     "Sweden" => [
-        "Abbr" => "SE",
+        "alpha2" => "SE",
         "phone" => "+46",
-        "emoji" => "🇸🇪"
+        "emoji" => "🇸🇪",
+        "alpha3" => "SWE"
     ],
     "Switzerland" => [
-        "Abbr" => "CH",
+        "alpha2" => "CH",
         "phone" => "+41",
-        "emoji" => "🇨🇭"
+        "emoji" => "🇨🇭",
+        "alpha3" => "CHE"
     ],
     "Syria" => [
-        "Abbr" => "SY",
+        "alpha2" => "SY",
         "phone" => "+963",
-        "emoji" => "🇸🇾"
+        "emoji" => "🇸🇾",
+        "alpha3" => "SYR"
     ],
     "São Tomé and Príncipe" => [
-        "Abbr" => "ST",
+        "alpha2" => "ST",
         "phone" => "+239",
-        "emoji" => "🇸🇹"
+        "emoji" => "🇸🇹",
+        "alpha3" => "STP"
     ],
     "Taiwan" => [
-        "Abbr" => "TW",
+        "alpha2" => "TW",
         "phone" => "+886",
-        "emoji" => "🇹🇼"
+        "emoji" => "🇹🇼",
+        "alpha3" => "TWN"
     ],
     "Tajikistan" => [
-        "Abbr" => "TJ",
+        "alpha2" => "TJ",
         "phone" => "+992",
-        "emoji" => "🇹🇯"
+        "emoji" => "🇹🇯",
+        "alpha3" => "TJK"
     ],
     "Tanzania" => [
-        "Abbr" => "TZ",
+        "alpha2" => "TZ",
         "phone" => "+255",
-        "emoji" => "🇹🇿"
+        "emoji" => "🇹🇿",
+        "alpha3" => "TZA"
     ],
     "Thailand" => [
-        "Abbr" => "TH",
+        "alpha2" => "TH",
         "phone" => "+66",
-        "emoji" => "🇹🇭"
+        "emoji" => "🇹🇭",
+        "alpha3" => "THA"
     ],
     "Togo" => [
-        "Abbr" => "TG",
+        "alpha2" => "TG",
         "phone" => "+228",
-        "emoji" => "🇹🇬"
+        "emoji" => "🇹🇬",
+        "alpha3" => "TGO"
     ],
     "Tokelau" => [
-        "Abbr" => "TK",
+        "alpha2" => "TK",
         "phone" => "+690",
-        "emoji" => "🇹🇰"
+        "emoji" => "🇹🇰",
+        "alpha3" => "TKL"
     ],
     "Tonga" => [
-        "Abbr" => "TO",
+        "alpha2" => "TO",
         "phone" => "+676",
-        "emoji" => "🇹🇴"
+        "emoji" => "🇹🇴",
+        "alpha3" => "TON"
     ],
     "Trinidad and Tobago" => [
-        "Abbr" => "TT",
+        "alpha2" => "TT",
         "phone" => "+1868",
-        "emoji" => "🇹🇹"
+        "emoji" => "🇹🇹",
+        "alpha3" => "TTO"
     ],
     "Tunisia" => [
-        "Abbr" => "TN",
+        "alpha2" => "TN",
         "phone" => "+216",
-        "emoji" => "🇹🇳"
+        "emoji" => "🇹🇳",
+        "alpha3" => "TUN"
     ],
     "Turkey" => [
-        "Abbr" => "TR",
+        "alpha2" => "TR",
         "phone" => "+90",
-        "emoji" => "🇹🇷"
+        "emoji" => "🇹🇷",
+        "alpha3" => "TUR"
     ],
     "Turkmenistan" => [
-        "Abbr" => "TM",
+        "alpha2" => "TM",
         "phone" => "+993",
-        "emoji" => "🇹🇲"
+        "emoji" => "🇹🇲",
+        "alpha3" => "TKM"
     ],
     "Turks and Caicos Islands" => [
-        "Abbr" => "TC",
+        "alpha2" => "TC",
         "phone" => "+1649",
-        "emoji" => "🇹🇨"
+        "emoji" => "🇹🇨",
+        "alpha3" => "TCA"
     ],
     "Tuvalu" => [
-        "Abbr" => "TV",
+        "alpha2" => "TV",
         "phone" => "+688",
-        "emoji" => "🇹🇻"
+        "emoji" => "🇹🇻",
+        "alpha3" => "TUV"
     ],
     "U.S. Minor Outlying Islands" => [
-        "Abbr" => "UM",
+        "alpha2" => "UM",
         "phone" => "+1",
-        "emoji" => "🇺🇲"
+        "emoji" => "🇺🇲",
+        "alpha3" => "UMI"
     ],
     "U.S. Virgin Islands" => [
-        "Abbr" => "VI",
+        "alpha2" => "VI",
         "phone" => "+1340",
-        "emoji" => "🇻🇮"
+        "emoji" => "🇻🇮",
+        "alpha3" => "VIR"
     ],
     "Uganda" => [
-        "Abbr" => "UG",
+        "alpha2" => "UG",
         "phone" => "+256",
-        "emoji" => "🇺🇬"
+        "emoji" => "🇺🇬",
+        "alpha3" => "UGA"
     ],
     "Ukraine" => [
-        "Abbr" => "UA",
+        "alpha2" => "UA",
         "phone" => "+380",
-        "emoji" => "🇺🇦"
+        "emoji" => "🇺🇦",
+        "alpha3" => "UKR"
     ],
     "United Arab Emirates" => [
-        "Abbr" => "AE",
+        "alpha2" => "AE",
         "phone" => "+971",
-        "emoji" => "🇦🇪"
+        "emoji" => "🇦🇪",
+        "alpha3" => "ARE"
     ],
     "United Kingdom" => [
-        "Abbr" => "GB",
+        "alpha2" => "GB",
         "phone" => "+44",
-        "emoji" => "🇬🇧"
+        "emoji" => "🇬🇧",
+        "alpha3" => "GBR"
     ],
     "United States" => [
-        "Abbr" => "US",
+        "alpha2" => "US",
         "phone" => "+1",
-        "emoji" => "🇺🇸"
+        "emoji" => "🇺🇸",
+        "alpha3" => "USA"
     ],
     "Uruguay" => [
-        "Abbr" => "UY",
+        "alpha2" => "UY",
         "phone" => "+598",
-        "emoji" => "🇺🇾"
+        "emoji" => "🇺🇾",
+        "alpha3" => "URY"
     ],
     "Uzbekistan" => [
-        "Abbr" => "UZ",
+        "alpha2" => "UZ",
         "phone" => "+998",
-        "emoji" => "🇺🇿"
+        "emoji" => "🇺🇿",
+        "alpha3" => "UZB"
     ],
     "Vanuatu" => [
-        "Abbr" => "VU",
+        "alpha2" => "VU",
         "phone" => "+678",
-        "emoji" => "🇻🇺"
+        "emoji" => "🇻🇺",
+        "alpha3" => "VUT"
     ],
     "Vatican City" => [
-        "Abbr" => "VA",
+        "alpha2" => "VA",
         "phone" => "+379",
-        "emoji" => "🇻🇦"
+        "emoji" => "🇻🇦",
+        "alpha3" => "VAT"
     ],
     "Venezuela" => [
-        "Abbr" => "VE",
+        "alpha2" => "VE",
         "phone" => "+58",
-        "emoji" => "🇻🇪"
+        "emoji" => "🇻🇪",
+        "alpha3" => "VEN"
     ],
     "Vietnam" => [
-        "Abbr" => "VN",
+        "alpha2" => "VN",
         "phone" => "+84",
-        "emoji" => "🇻🇳"
+        "emoji" => "🇻🇳",
+        "alpha3" => "VNM"
     ],
     "Wallis and Futuna" => [
-        "Abbr" => "WF",
+        "alpha2" => "WF",
         "phone" => "+681",
-        "emoji" => "🇼🇫"
+        "emoji" => "🇼🇫",
+        "alpha3" => "WLF"
     ],
     "Western Sahara" => [
-        "Abbr" => "EH",
+        "alpha2" => "EH",
         "phone" => "+212",
-        "emoji" => "🇪🇭"
+        "emoji" => "🇪🇭",
+        "alpha3" => "ESH"
     ],
     "Yemen" => [
-        "Abbr" => "YE",
+        "alpha2" => "YE",
         "phone" => "+967",
-        "emoji" => "🇾🇪"
+        "emoji" => "🇾🇪",
+        "alpha3" => "YEM"
     ],
     "Zambia" => [
-        "Abbr" => "ZM",
+        "alpha2" => "ZM",
         "phone" => "+260",
-        "emoji" => "🇿🇲"
+        "emoji" => "🇿🇲",
+        "alpha3" => "ZMB"
     ],
     "Zimbabwe" => [
-        "Abbr" => "ZW",
+        "alpha2" => "ZW",
         "phone" => "+263",
-        "emoji" => "🇿🇼"
+        "emoji" => "🇿🇼",
+        "alpha3" => "ZWE"
     ],
     "Åland" => [
-        "Abbr" => "AX",
+        "alpha2" => "AX",
         "phone" => "+358",
-        "emoji" => "🇦🇽"
+        "emoji" => "🇦🇽",
+        "alpha3" => "ALA"
     ]
 ];
 
