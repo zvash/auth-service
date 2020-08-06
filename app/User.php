@@ -107,7 +107,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getImageUrlAttribute()
     {
-        $prefix = rtrim(env('APP_URL'), '/') . '/';
-        return $prefix . $this->image;
+        if ($this->image) {
+            $prefix = rtrim(env('APP_URL'), '/') . '/';
+            return $prefix . $this->image;
+        }
+        return $this->image;
     }
 }
