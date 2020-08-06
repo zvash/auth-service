@@ -210,7 +210,7 @@ class UserController extends Controller
         }
         $identifier = $request->get('identifier');
         $user = User::where('phone', $identifier)->orWhere('email', $identifier)->first();
-        if ($user) {
+        if ($user && $user->hasRole('admin')) {
             $token = make_random_hash($user->email);
             $user->setAttribute('reset_password_token', $token)
                 ->save();
@@ -219,7 +219,7 @@ class UserController extends Controller
                 'message' => 'success',
                 'errors' => null,
                 'status' => true,
-                'data' => ['message' => 'Check your email to reset the password.']
+                'data' => ['message' => "Check your email to reset the password.(url:" . rtrim(env('APP_URL'), '/') ."/password/forget/$token)"]
             ], 200);
         }
         return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
@@ -244,7 +244,7 @@ class UserController extends Controller
         }
 
         $user = User::where('reset_password_token', $token)->first();
-        if ($user) {
+        if ($user && $user->hasRole('admin')) {
             $password = Hash::make($params['password']);
             $user->setAttribute('password', $password)
                 ->setAttribute('reset_password_token', null)
