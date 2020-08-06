@@ -114,17 +114,18 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     * @param CountryRepository $countryRepository
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function registerAdmin(Request $request)
+    public function registerAdmin(Request $request, CountryRepository $countryRepository)
     {
         $currentTime = \Carbon\Carbon::now()->format('Y-m-d');
         $validator = Validator::make($request->all(), [
-            'phone' => ['required', 'unique:users'],
+            'phone' => 'required|regex:/^[1-9]{1}[0-9]{9}$/',
             'name' => 'required|string|max:255',
-            'email' => 'string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string',
-            'country_code' => 'required|string',
+            'country' => 'required|string|in:' . $countryRepository->getAllNameVariationsAsString(),
             'gender' => 'string|in:male,female,custom',
             'date_of_birth' => 'date_format:Y-m-d|before:' . $currentTime
         ]);
@@ -136,8 +137,13 @@ class UserController extends Controller
         $input = $request->all();
         $providedPassword = $input['password'];
         $input['password'] = Hash::make($input['password']);
-        $input['phone'] = $input['country_code'] . $input['phone'];
-        $user = User::create($input);
+        $input['phone'] = $countryRepository->getPhonePrefix($input['country']) . $input['phone'];
+        $input['currency'] = $countryRepository->getCurrency($input['country']);
+        $input['country'] = $countryRepository->getName($input['country']);
+        $data = array_filter($input, function ($key) {
+            return in_array($key, ['phone', 'name', 'email', 'password', 'country', 'gender', 'date_of_birth', 'currency']);
+        }, ARRAY_FILTER_USE_KEY);
+        $user = User::create($data);
         $user->setReferralCode();
         $roleIds = Role::whereIn('name', ['normal', 'admin'])->get()->pluck('id')->toArray();
         $user->roles()->attach($roleIds);
