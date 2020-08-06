@@ -47,7 +47,9 @@ class CreateRoleUserTable extends Migration
                 'phone' => '+989388855548',
                 'email' => 'siavash.hekmatnia@gmail.com',
                 'country' => 'Iran',
+                'currency' => 'IRR',
                 'password' => Hash::make($adminPassword),
+                'referral_code' => 'ADMIN'
             ]);
             $roleIds = [$adminRole->id, $normalRole->id];
             $adminUser->roles()->sync($roleIds);

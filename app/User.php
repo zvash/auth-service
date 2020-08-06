@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Passport\HasApiTokens;
 
+/**
+ * @property mixed referral_code
+ */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use HasApiTokens, Authenticatable, Authorizable;
@@ -20,7 +23,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'country', 'date_of_birth', 'gender', 'referral_code'
+        'name', 'email', 'phone', 'password', 'country', 'currency', 'date_of_birth', 'gender', 'referral_code'
     ];
 
     /**
@@ -63,19 +66,33 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     /**
      * Set Referral Code for User.
+     * @return string
      */
     public function setReferralCode()
     {
+        if ($this->referral_code) {
+            return $this->referral_code;
+        }
         $referralCode = make_random_referral_code();
         try {
             $this
                 ->setAttribute('referral_code', $referralCode)
                 ->save();
+            return $referralCode;
         } catch (\Illuminate\Database\QueryException $exception) {
             $message = $exception->getMessage();
             if (strpos($message, 'Duplicate entry') !== false) {
-                $this->setReferralCode();
+                return $this->setReferralCode();
             }
         }
+    }
+
+    /**
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole(string $role)
+    {
+        return in_array($role, $this->roles->pluck('name')->toArray());
     }
 }

@@ -31,14 +31,17 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
         $router->get('countries', 'CountryController@getAll');
 
-        $router->post('register', 'UserController@register');
-        $router->post('code-request', 'UserController@codeRequest');
+        $router->post('code-request', 'UserController@register');
+        //$router->post('code-request', 'UserController@codeRequest');
 
         /** Authenticated Users Only */
         $router->group(['middleware' => 'auth'], function ($router) {
             $router->get('logout', 'UserController@logout');
             $router->get('authenticate', 'UserController@authenticate');
-            $router->get('me', 'UserController@getUser');
+            //$router->get('me', 'UserController@getUser');
+
+            $router->post('profile/update', 'UserController@update');
+            $router->post('profile/remove-image', 'UserController@deleteProfileImage');
         });
 
         $router->group(['middleware' => 'admin'], function ($router) {

@@ -3,49 +3,113 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Role;
-use App\Services\NotificationService;
 use App\User;
+use App\Utils\CountryRepository;
+use Laravel\Passport\Client;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Traits\ResponseMaker;
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Services\NotificationService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Passport\Client;
 
 class UserController extends Controller
 {
 
+    use ResponseMaker;
+
     /**
      * @param Request $request
      * @param NotificationService $notificationService
+     * @param CountryRepository $countryRepository
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function register(Request $request, NotificationService $notificationService)
+    public function register(Request $request, NotificationService $notificationService, CountryRepository $countryRepository)
     {
         $validator = Validator::make($request->all(), [
-            'phone' => ['required', 'unique:users'],
-            'name' => 'required|string|max:255',
-            'email' => 'string|email|max:255|unique:users',
-            'country_code' => 'required|string',
-
+            'phone' => 'required|regex:/^[1-9]{1}[0-9]{9}$/',
+            'country' => 'required|string|in:' . $countryRepository->getAllNameVariationsAsString()
         ]);
 
         if ($validator->fails()) {
             return response(['message' => 'Validation errors', 'errors' => $validator->errors(), 'status' => false], 422);
         }
-
-        $input = $request->all();
+        $input = $request->only(['phone', 'country']);
+        $countryName = $countryRepository->getName($input['country']);
+        $countryCode = $countryRepository->getPhonePrefix($input['country']);
+        $currency = $countryRepository->getCurrency($input['country']);
         $generatedPassword = mt_rand(1000, 9999);
-        $input['password'] = Hash::make($generatedPassword);
-        $input['phone'] = $input['country_code'] . $input['phone'];
-        $user = User::create($input);
+        $password = Hash::make($generatedPassword);
+        $input['phone'] = $countryCode . $input['phone'];
+        $user = User::firstOrCreate(
+            ['phone' => $input['phone']],
+            ['country' => $countryName, 'currency' => $currency, 'password' => $password]
+        );
         $user->setReferralCode();
-        $role = Role::where('name', 'normal')->first();
-        $user->roles()->attach($role->id);
-        $this->generateActivationCode($user, $notificationService);
 
-        return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => ['message' => 'You will receive an activation code']], 200);
+        if (!$user->hasRole('admin')) {
+            if (!$user->hasRole('normal')) {
+                $role = Role::where('name', 'normal')->first();
+                $user->roles()->attach($role->id);
+            }
+            $password = $this->generateActivationCode($user, $notificationService);
+            return $this->success(['username' => $user->phone, 'password' => $password]);
+        }
+        return $this->success(['message' => 'You cannot log in through this url']);
+        //return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => ['message' => 'You will receive an activation code']], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $currentTime = \Carbon\Carbon::now()->format('Y-m-d');
+            $validator = Validator::make($request->all(), [
+                'name' => 'string',
+                'email' => 'string|email|max:255|unique:users,email,' . $user->id,
+                'gender' => 'string|in:male,female,custom',
+                'date_of_birth' => 'date_format:Y-m-d|before:' . $currentTime,
+                'image' => 'mimes:jpeg,jpg,png',
+
+            ]);
+
+            if ($validator->fails()) {
+                return $this->failValidation($validator->errors());
+            }
+
+
+            $path = null;
+            if ($request->hasFile('image')) {
+                $publicImagesPath = rtrim(env('PUBLIC_IMAGES_PATH', 'public/images'), '/');
+                $file = $request->file('image');
+                $path = preg_replace(
+                    '#public/#',
+                    'storage/',
+                    Storage::putFile($publicImagesPath, $file)
+                );
+            }
+            $inputs = array_filter($request->all(), function ($key) {
+                return in_array($key, ['name', 'email', 'gender', 'date_of_birth']);
+            }, ARRAY_FILTER_USE_KEY);
+            if ($path) {
+                $inputs['image'] = $path;
+            }
+            foreach ($inputs as $key => $value) {
+                $user->setAttribute($key, $value);
+            }
+            $user->save();
+
+            return $this->success($user);
+        }
+
+        return $this->failMessage('Content not fount.', 404);
     }
 
     /**
@@ -61,7 +125,7 @@ class UserController extends Controller
             'email' => 'string|email|max:255|unique:users',
             'password' => 'required|string',
             'country_code' => 'required|string',
-            'gender' => 'string|in:male,female,prefer_not_to_say',
+            'gender' => 'string|in:male,female,custom',
             'date_of_birth' => 'date_format:Y-m-d|before:' . $currentTime
         ]);
 
@@ -289,9 +353,24 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function deleteProfileImage(Request $request)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $user->setAttribute('image', null)->save();
+            return $this->success($user);
+        }
+        return $this->failMessage('Content not found', 404);
+    }
+
+    /**
      * @param User $user
      * @param NotificationService $notificationService
      * @param string $password
+     * @return string
      */
     private function generateActivationCode(User $user, NotificationService $notificationService, string $password = '')
     {
@@ -300,5 +379,6 @@ class UserController extends Controller
             $user->setAttribute('password', Hash::make($password))->save();
         }
         $notificationService->sendLoginActivationCode($user, $password);
+        return $password;
     }
 }

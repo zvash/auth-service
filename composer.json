@@ -9,8 +9,10 @@
         "dusterio/lumen-passport": "^0.2.19",
         "flipbox/lumen-generator": "^7.0",
         "guzzlehttp/guzzle": "^6.0",
+        "irazasyed/larasupport": "^1.0",
         "laravel/lumen-framework": "^7.0",
-        "laravel/passport": "8.4.4"
+        "laravel/passport": "8.4.4",
+        "rinvex/countries": "^7.3"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",

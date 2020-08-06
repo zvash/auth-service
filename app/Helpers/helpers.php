@@ -14,3 +14,4 @@ function make_random_referral_code()
 {
     return strtoupper(substr(make_random_hash(),4,5));
 }
+
