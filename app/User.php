@@ -12,6 +12,7 @@ use Laravel\Passport\HasApiTokens;
 
 /**
  * @property mixed referral_code
+ * @property mixed image
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -25,6 +26,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $fillable = [
         'name', 'email', 'phone', 'password', 'country', 'currency', 'date_of_birth', 'gender', 'referral_code'
     ];
+
+    /**
+     * @var array
+     */
+    protected $appends = ['image_url'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -94,5 +100,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function hasRole(string $role)
     {
         return in_array($role, $this->roles->pluck('name')->toArray());
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageUrlAttribute()
+    {
+        $prefix = rtrim(env('APP_URL'), '/') . '/';
+        return $prefix . $this->image;
     }
 }

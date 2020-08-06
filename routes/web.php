@@ -52,3 +52,16 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
 });
 
+$router->group(['prefix' => 'storage'], function ($router) {
+
+    $router->group(['namespace' => 'Resource'], function ($router) {
+
+        $router->group(['prefix' => 'images'], function ($router) {
+
+            $router->get('/{fileName}', 'ImagesController@download');
+
+        });
+    });
+
+});
+
