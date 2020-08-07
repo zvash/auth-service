@@ -8,3 +8,4 @@ storage/oauth-private.key
 storage/oauth-public.key
 public/.well-known/
 public/storage
+composer.lock
