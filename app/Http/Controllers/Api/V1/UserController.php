@@ -315,7 +315,7 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
         $user = Auth::user();
-        $publicFields = ['id', 'name', 'phone', 'email', 'country', 'date_of_birth', 'gender', 'referral_code', 'roles'];
+        $publicFields = ['id', 'name', 'phone', 'email', 'country', 'currency', 'date_of_birth', 'gender', 'referral_code', 'roles'];
         if ($user) {
             $roles = $user->roles->pluck('name')->toArray();
             $userArray = array_filter($user->toArray(),
