@@ -113,4 +113,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         }
         return $this->image;
     }
+
+    /**
+     * @return bool
+     */
+    public function isNewUser()
+    {
+        if ($this->hasRole('admin')) {
+            return false;
+        }
+        return $this->updated_at->diffInSeconds($this->created_at) < 5;
+    }
 }

@@ -48,6 +48,7 @@ class UserController extends Controller
             ['phone' => $input['phone']],
             ['country' => $countryName, 'currency' => $currency, 'password' => $password]
         );
+
         $user->setReferralCode();
 
         if (!$user->hasRole('admin')) {
@@ -56,7 +57,7 @@ class UserController extends Controller
                 $user->roles()->attach($role->id);
             }
             $password = $this->generateActivationCode($user, $notificationService);
-            return $this->success(['username' => $user->phone, 'password' => $password]);
+            return $this->success(['username' => $user->phone, 'first_login' => $user->isNewUser(), 'password' => $password]);
         }
         return $this->success(['message' => 'You cannot log in through this url']);
         //return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => ['message' => 'You will receive an activation code']], 200);
@@ -225,7 +226,7 @@ class UserController extends Controller
                 'message' => 'success',
                 'errors' => null,
                 'status' => true,
-                'data' => ['message' => "Check your email to reset the password.(url:" . rtrim(env('APP_URL'), '/') ."/password/forget/$token)"]
+                'data' => ['message' => "Check your email to reset the password.(url:" . rtrim(env('APP_URL'), '/') . "/password/forget/$token)"]
             ], 200);
         }
         return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
