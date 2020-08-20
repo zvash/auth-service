@@ -35,7 +35,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['message' => 'Validation errors', 'errors' => $validator->errors(), 'status' => false], 422);
+            return $this->failValidation($validator->errors());
         }
         $input = $request->only(['phone', 'country']);
         $countryName = $countryRepository->getName($input['country']);
@@ -60,7 +60,6 @@ class UserController extends Controller
             return $this->success(['username' => $user->phone, 'first_login' => $user->isNewUser(), 'password' => $password]);
         }
         return $this->success(['message' => 'You cannot log in through this url']);
-        //return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => ['message' => 'You will receive an activation code']], 200);
     }
 
     /**
@@ -132,7 +131,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['message' => 'Validation errors', 'errors' => $validator->errors(), 'status' => false], 422);
+            return $this->failValidation($validator->errors());
         }
 
         $input = $request->all();
@@ -174,9 +173,9 @@ class UserController extends Controller
         $user = Auth::user();
         if ($user) {
             $user->token()->revoke();
-            return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => []], 200);
+            return $this->success([]);
         }
-        return response(['message' => 'failed', 'errors' => 'not logged in', 'status' => false, 'data' => []], 403);
+        return $this->failMessage('Not logged in.', 400);
     }
 
     /**
@@ -185,7 +184,7 @@ class UserController extends Controller
     public function getUser()
     {
         $user = Auth::user();
-        return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => $user], 200);
+        return $this->success($user);
     }
 
     /**
@@ -197,9 +196,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if ($user) {
-            return response(['message' => 'success', 'errors' => null, 'status' => true, 'data' => $user], 200);
+            return $this->success($user);
         }
-        return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
+        return $this->failMessage('Content not found.', 404);
     }
 
     /**
@@ -213,7 +212,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['message' => 'Validation errors', 'errors' => $validator->errors(), 'status' => false], 422);
+            return $this->failValidation($validator->errors());
         }
         $identifier = $request->get('identifier');
         $user = User::where('phone', $identifier)->orWhere('email', $identifier)->first();
@@ -222,14 +221,10 @@ class UserController extends Controller
             $user->setAttribute('reset_password_token', $token)
                 ->save();
             //TODO: Notify user
-            return response([
-                'message' => 'success',
-                'errors' => null,
-                'status' => true,
-                'data' => ['message' => "Check your email to reset the password.(url:" . rtrim(env('APP_URL'), '/') . "/password/forget/$token)"]
-            ], 200);
+
+            return $this->success(['message' => "Check your email to reset the password.(url:" . rtrim(env('APP_URL'), '/') . "/password/forget/$token)"]);
         }
-        return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
+        return $this->failMessage('Content not found.', 404);
     }
 
     /**
@@ -247,7 +242,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['message' => 'Validation errors', 'errors' => $validator->errors(), 'status' => false], 422);
+            return $this->failValidation($validator->errors());
         }
 
         $user = User::where('reset_password_token', $token)->first();
@@ -260,14 +255,9 @@ class UserController extends Controller
             if ($userToken) {
                 $userToken->revoke();
             }
-            return response([
-                'message' => 'success',
-                'errors' => null,
-                'status' => true,
-                'data' => ['message' => 'Password was reset successfully. You need to login again.']
-            ], 200);
+            return $this->success(['message' => 'Password was reset successfully. You need to login again.']);
         }
-        return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
+        return $this->failMessage('Content not found.', 404);
     }
 
     /**
@@ -293,20 +283,15 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['message' => 'Validation errors', 'errors' => $validator->errors(), 'status' => false], 422);
+            return $this->failValidation($validator->errors());
         }
 
         $user = Auth::user();
         if ($user && Hash::check($params['old_password'], $user->getAttribute('password'))) {
             $user->setAttribute('password', Hash::make($params['new_password']))->save();
-            return response([
-                'message' => 'success',
-                'errors' => null,
-                'status' => true,
-                'data' => ['message' => 'Password was changed successfully.']
-            ], 200);
+            return $this->success(['message' => 'Password was changed successfully.']);
         }
-        return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
+        return $this->failMessage('Content not found.', 404);
     }
 
     /**
@@ -325,15 +310,9 @@ class UserController extends Controller
                 },
                 ARRAY_FILTER_USE_KEY);
             $userArray['roles'] = $roles;
-
-            return response([
-                'message' => 'success',
-                'errors' => null,
-                'status' => true,
-                'data' => $userArray
-            ], 200);
+            return $this->success($userArray);
         }
-        return response(['message' => 'failed', 'errors' => ['message' => 'content not found'], 'status' => false, 'data' => []], 404);
+        return $this->failMessage('Content not found.', 404);
     }
 
     /**

@@ -25,9 +25,11 @@ $router->post('/password/reset/{token}', 'Api\V1\UserController@resetPassword');
 
 $router->group(['prefix' => 'api/v1'], function ($router) {
 
-    $router->post('login', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
+    $router->post('login-passport', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
 
     $router->group(['namespace' => 'Api\V1'], function ($router) {
+
+        $router->post('login', 'AccessTokenController@issueToken');
 
         $router->get('countries', 'CountryController@getAll');
 
