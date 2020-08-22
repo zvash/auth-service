@@ -57,14 +57,6 @@ return [
         "name" => "Anguilla",
         "currency" => "XCD"
     ],
-    "Antarctica" => [
-        "alpha2" => "AQ",
-        "phone" => "+672",
-        "emoji" => "🇦🇶",
-        "alpha3" => "ATA",
-        "name" => "Antarctica",
-        "currency" => false
-    ],
     "Antigua and Barbuda" => [
         "alpha2" => "AG",
         "phone" => "+1268",
