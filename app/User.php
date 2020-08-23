@@ -122,6 +122,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         if ($this->hasRole('admin')) {
             return false;
         }
-        return $this->updated_at->diffInSeconds($this->created_at) < 5;
+        return $this->last_logged_in == null;
     }
 }

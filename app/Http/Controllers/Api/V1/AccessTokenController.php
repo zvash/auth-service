@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Traits\ResponseMaker;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
@@ -42,6 +43,10 @@ class AccessTokenController extends Controller
         $statusCode = $loginResponse->getStatusCode();
         $content = json_decode($loginResponse->getContent(), 1);
         if ($statusCode == 200) {
+            $user = User::where('phone', $inputs['username'])->first();
+            $content['first_login'] = $user->isNewUser();
+            $user->last_logged_in = date('Y-m-d H:i:s');
+            $user->save();
             return $this->success($content);
         } else {
             $data = [];
