@@ -13,6 +13,9 @@ use Laravel\Passport\HasApiTokens;
 /**
  * @property mixed referral_code
  * @property mixed image
+ * @property int referred_by
+ * @property int id
+ * @property string phone
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -30,7 +33,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * @var array
      */
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url', 'masked_phone'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,6 +43,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
         'reset_password_token',
+        'referred_by',
     ];
 
     /**
@@ -112,6 +116,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             return $prefix . $this->image;
         }
         return $this->image;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getMaskedPhoneAttribute()
+    {
+        if ($this->phone) {
+            return substr_replace($this->phone, '.....', -9, 6);
+        }
+        return null;
     }
 
     /**

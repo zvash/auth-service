@@ -18,5 +18,8 @@ class EventServiceProvider extends ServiceProvider
         \Laravel\Passport\Events\AccessTokenCreated::class => [
             \App\Listeners\ForceResetUserPassword::class,
         ],
+        \App\Events\UserHasCompletedATaskForTheFirstTime::class => [
+            \App\Listeners\PayReferralCoinsListener::class
+        ]
     ];
 }

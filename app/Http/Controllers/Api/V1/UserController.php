@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Events\UserHasCompletedATaskForTheFirstTime;
+use App\Exceptions\ReferSelfException;
+use App\Exceptions\ServiceException;
+use App\Repositories\UserRepository;
 use App\Role;
+use App\Services\BillingService;
 use App\User;
 use Laravel\Passport\Client;
 use Illuminate\Http\Request;
@@ -77,24 +82,20 @@ class UserController extends Controller
                 'gender' => 'string|in:male,female,custom',
                 'date_of_birth' => 'date_format:Y-m-d|before:' . $currentTime,
                 'image' => 'mimes:jpeg,jpg,png',
-
+                'referral_code' => 'string|exists:users,referral_code'
             ]);
 
             if ($validator->fails()) {
                 return $this->failValidation($validator->errors());
             }
 
-
-            $path = null;
-            if ($request->hasFile('image')) {
-                $publicImagesPath = rtrim(env('PUBLIC_IMAGES_PATH', 'public/images'), '/');
-                $file = $request->file('image');
-                $path = preg_replace(
-                    '#public/#',
-                    'storage/',
-                    Storage::putFile($publicImagesPath, $file)
-                );
+            try {
+                $this->saveReferredBy($request, $user);
+            } catch (ServiceException $exception) {
+                return $this->failData($exception->getData(), 400);
             }
+
+            $path = $this->saveProfileImage($request);
             $inputs = array_filter($request->all(), function ($key) {
                 return in_array($key, ['name', 'email', 'gender', 'date_of_birth']);
             }, ARRAY_FILTER_USE_KEY);
@@ -353,6 +354,92 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function profileStatus(Request $request)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $data = [
+                'has_mail' => !!$user->email,
+                'has_image' => !!$user->image,
+                'has_name' => !!$user->name,
+                'has_gender' => !!$user->gender,
+                'has_date_of_birth' => !!$user->date_of_birth
+            ];
+
+            $data['completion_status'] = (array_sum(array_values($data)) * 20) . '%';
+            return $this->success($data);
+
+        }
+        return $this->failMessage('Content not found.', 404);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $userId
+     * @param BillingService $billingService
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function completeTask(Request $request, int $userId, BillingService $billingService)
+    {
+        $user = User::find($userId);
+        if ($user) {
+            if (!$user->completed_a_task) {
+                $user->completed_a_task = true;
+                $user->save();
+                event(new UserHasCompletedATaskForTheFirstTime($user, $billingService));
+            }
+
+            return $this->success($user);
+        }
+        return $this->failMessage('Content not found.', 404);
+    }
+
+    /**
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @param BillingService $billingService
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function referralSummary(Request $request, UserRepository $userRepository, BillingService $billingService)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $referringUsersPaginatedArray = User::where('referred_by', $user->id)
+                ->orderBy('id', 'DESC')
+                ->paginate(10, ['id', 'phone', 'name', 'image'])
+                ->toArray();
+
+            if ($referringUsersPaginatedArray) {
+                $referringUsers = $referringUsersPaginatedArray['data'];
+                try {
+                    $referPrizes = $userRepository->getCoinsFromReferrals($referringUsers, $billingService);
+                    foreach ($referringUsers as $index => $referringUser) {
+                        if (isset($referPrizes['users'][$referringUser['id']]) && $referPrizes['users'][$referringUser['id']]['COIN']) {
+                            $referringUsers[$index]['refer_prize']['COIN'] = $referPrizes['users'][$referringUser['id']]['COIN'];
+                            $referringUsers[$index]['status'] = 'received';
+                        } else {
+                            $referringUsers[$index]['refer_prize']['COIN'] = 0;
+                            $referringUsers[$index]['status'] = 'pending';
+                        }
+                        unset($referringUsers[$index]['id']);
+                        unset($referringUsers[$index]['phone']);
+                        unset($referringUsers[$index]['image']);
+                    }
+                    $referringUsersPaginatedArray['data'] = $referringUsers;
+                    return $this->success($referringUsersPaginatedArray);
+                } catch (ServiceException $exception) {
+                    return $this->failData($exception->getData(), 400);
+                }
+            }
+            return $this->failMessage('Content not found.', 404);
+        }
+        return $this->failMessage('Content not found.', 404);
+    }
+
+    /**
      * @param User $user
      * @param NotificationService $notificationService
      * @param string $password
@@ -366,5 +453,61 @@ class UserController extends Controller
         }
         $notificationService->sendLoginActivationCode($user, $password);
         return $password;
+    }
+
+    /**
+     * @param Request $request
+     * @return null|string|string[]
+     */
+    private function saveProfileImage(Request $request)
+    {
+        $path = null;
+        if ($request->hasFile('image')) {
+            $publicImagesPath = rtrim(env('PUBLIC_IMAGES_PATH', 'public/images'), '/');
+            $file = $request->file('image');
+            $path = preg_replace(
+                '#public/#',
+                'storage/',
+                Storage::putFile($publicImagesPath, $file)
+            );
+        }
+        return $path;
+    }
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @throws ReferSelfException
+     * @throws ServiceException
+     */
+    private function saveReferredBy(Request $request, User $user)
+    {
+        if ($request->has('referral_code')) {
+            $referralCode = $request->get('referral_code');
+            if ($referralCode == $user->referral_code) {
+                throw new ReferSelfException('Users cannot refer themselves.', [
+                    'message' => 'Users cannot refer themselves.',
+                    'user' => $user,
+                    'referral_code' => $referralCode
+                ]);
+            }
+            if ($user->referred_by) {
+                throw new ReferSelfException('You have already set another referral code.', [
+                    'message' => 'You have already set another referral code.',
+                    'user' => $user,
+                    'referral_code' => $referralCode
+                ]);
+            }
+            $referredByUser = User::where('referral_code', $referralCode)->first();
+            if (!$referredByUser) {
+                throw new ServiceException('Referral code does not belong to any user.', [
+                    'message' => 'Referral code does not belong to any user.',
+                    'user' => null,
+                    'referral_code' => $referralCode
+                ]);
+            }
+            $user->referred_by = $referredByUser->id;
+            $user->save();
+        }
     }
 }

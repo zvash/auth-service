@@ -40,15 +40,29 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->group(['middleware' => 'auth'], function ($router) {
             $router->get('logout', 'UserController@logout');
             $router->get('authenticate', 'UserController@authenticate');
-            //$router->get('me', 'UserController@getUser');
 
             $router->post('profile/update', 'UserController@update');
             $router->post('profile/remove-image', 'UserController@deleteProfileImage');
+            $router->get('profile/status/completion', 'UserController@profileStatus');
+            $router->get('profile/status/referrals', 'UserController@referralSummary');
         });
 
         $router->group(['middleware' => 'admin'], function ($router) {
             $router->post('admin/password/change', 'UserController@changePassword');
             $router->post('admin/register', 'UserController@registerAdmin');
+
+            $router->post('admin/configs', 'ConfigController@set');
+            $router->put('admin/configs/{key}/set', 'ConfigController@update');
+            $router->get('admin/configs/all', 'ConfigController@all');
+
+            $router->post('admin/services/register', 'ServiceController@register');
+            $router->get('admin/services/all', 'ServiceController@getAll');
+        });
+
+        $router->group(['middleware' => 'trusted'], function ($router) {
+
+            $router->post('users/{userId}/complete-task', 'UserController@completeTask');
+
         });
     });
 
