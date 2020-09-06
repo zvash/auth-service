@@ -418,10 +418,16 @@ class UserController extends Controller
                     $referPrizes = $userRepository->getCoinsFromReferrals($referringUsers, $billingService);
                     foreach ($referringUsers as $index => $referringUser) {
                         if (isset($referPrizes['users'][$referringUser['id']]) && $referPrizes['users'][$referringUser['id']]['COIN']) {
-                            $referringUsers[$index]['refer_prize']['COIN'] = $referPrizes['users'][$referringUser['id']]['COIN'];
+                            $referringUsers[$index]['refer_prize'] = [
+                                'currency' => 'COIN',
+                                'amount' => $referPrizes['users'][$referringUser['id']]['COIN']
+                            ];
                             $referringUsers[$index]['status'] = 'received';
                         } else {
-                            $referringUsers[$index]['refer_prize']['COIN'] = 0;
+                            $referringUsers[$index]['refer_prize'] = [
+                                'currency' => 'COIN',
+                                'amount' => 0
+                            ];
                             $referringUsers[$index]['status'] = 'pending';
                         }
                         unset($referringUsers[$index]['id']);
