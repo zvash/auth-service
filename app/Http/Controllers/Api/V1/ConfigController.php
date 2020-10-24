@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Config;
+use App\Exceptions\ServiceException;
 use App\Traits\ResponseMaker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -67,5 +68,19 @@ class ConfigController extends Controller
         $config->value = $data['value'];
         $config->save();
         return $this->success($config);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function getReferralCoinAmount(Request $request)
+    {
+        try {
+            $amount = Config::getValue('refer_coins');
+        } catch (ServiceException $e) {
+            $amount = 0;
+        }
+        return $this->success(['refer_coins' => $amount]);
     }
 }

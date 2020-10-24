@@ -46,6 +46,8 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
             $router->get('profile/status/completion', 'UserController@profileStatus');
             $router->get('profile/status/referrals', 'UserController@referralSummary');
             $router->get('profile/status/referrals/statistics', 'UserController@referralStatistics');
+
+            $router->get('configs/refer-coins', 'ConfigController@getReferralCoinAmount');
         });
 
         $router->group(['middleware' => 'admin'], function ($router) {
