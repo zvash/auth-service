@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Config;
 use App\Events\UserHasCompletedATaskForTheFirstTime;
 use App\Exceptions\ReferSelfException;
 use App\Exceptions\ServiceException;
@@ -436,6 +437,52 @@ class UserController extends Controller
                     }
                     $referringUsersPaginatedArray['data'] = $referringUsers;
                     return $this->success($referringUsersPaginatedArray);
+                } catch (ServiceException $exception) {
+                    return $this->failData($exception->getData(), 400);
+                }
+            }
+            return $this->failMessage('Content not found.', 404);
+        }
+        return $this->failMessage('Content not found.', 404);
+    }
+
+    /**
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @param BillingService $billingService
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function referralStatistics(Request $request, UserRepository $userRepository, BillingService $billingService)
+    {
+        $user = Auth::user();
+        if ($user) {
+            try {
+                $pendingAmount = Config::getValue('refer_coins');
+            } catch (ServiceException $e) {
+                $pendingAmount = 0;
+            }
+            $referringUsers = User::where('referred_by', $user->id)
+                ->orderBy('id', 'DESC')
+                ->get()
+                ->toArray();
+
+            if ($referringUsers) {
+                try {
+                    $referPrizes = $userRepository->getCoinsFromReferrals($referringUsers, $billingService);
+                    $totalReceived = 0;
+                    $totalPending = 0;
+                    foreach ($referringUsers as $index => $referringUser) {
+                        if (isset($referPrizes['users'][$referringUser['id']]) && $referPrizes['users'][$referringUser['id']]['COIN']) {
+                            $totalReceived += $referPrizes['users'][$referringUser['id']]['COIN'];
+                        } else {
+                            $totalPending += $pendingAmount;
+                        }
+                    }
+                    return $this->success([
+                        'received' => $totalReceived,
+                        'pending' => $totalPending,
+                        'currency' => 'COIN',
+                    ]);
                 } catch (ServiceException $exception) {
                     return $this->failData($exception->getData(), 400);
                 }

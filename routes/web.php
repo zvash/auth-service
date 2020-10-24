@@ -45,6 +45,7 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
             $router->post('profile/remove-image', 'UserController@deleteProfileImage');
             $router->get('profile/status/completion', 'UserController@profileStatus');
             $router->get('profile/status/referrals', 'UserController@referralSummary');
+            $router->get('profile/status/referrals/statistics', 'UserController@referralStatistics');
         });
 
         $router->group(['middleware' => 'admin'], function ($router) {
