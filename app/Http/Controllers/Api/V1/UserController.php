@@ -370,6 +370,7 @@ class UserController extends Controller
                 'has_date_of_birth' => !!$user->date_of_birth
             ];
 
+            $data['completion_percent'] = (array_sum(array_values($data)) * 20);
             $data['completion_status'] = (array_sum(array_values($data)) * 20) . '%';
             return $this->success($data);
 
