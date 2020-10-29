@@ -371,7 +371,7 @@ class UserController extends Controller
             ];
 
             $data['completion_percent'] = (array_sum(array_values($data)) * 20);
-            $data['completion_status'] = (array_sum(array_values($data)) * 20) . '%';
+            $data['completion_status'] = $data['completion_percent'] . '%';
             return $this->success($data);
 
         }
