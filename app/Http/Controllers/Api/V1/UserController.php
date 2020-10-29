@@ -488,7 +488,11 @@ class UserController extends Controller
                     return $this->failData($exception->getData(), 400);
                 }
             }
-            return $this->failMessage('Content not found.', 404);
+            return $this->success([
+                'received' => 0,
+                'pending' => 0,
+                'currency' => 'COIN',
+            ]);
         }
         return $this->failMessage('Content not found.', 404);
     }
