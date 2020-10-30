@@ -77,7 +77,7 @@ class ConfigController extends Controller
     public function getReferralCoinAmount(Request $request)
     {
         try {
-            $amount = Config::getValue('refer_coins');
+            $amount = Config::getValue('refer_coins') * 1;
         } catch (ServiceException $e) {
             $amount = 0;
         }
