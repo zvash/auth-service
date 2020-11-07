@@ -24,12 +24,12 @@ class PayProfileCompletionCoins
      * Handle the event.
      *
      * @param  ProfileWasUpdated $event
-     * @param BillingService $billingService
      * @return void
      */
-    public function handle(ProfileWasUpdated $event, BillingService $billingService)
+    public function handle(ProfileWasUpdated $event)
     {
         $userId = $event->getUserId();
+        $billingService = $event->getBillingService();
         $user = User::find($userId);
         if ($user) {
             if (!$user->completed_profile) {

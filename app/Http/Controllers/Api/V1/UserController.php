@@ -71,9 +71,10 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     * @param BillingService $billingService
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function update(Request $request)
+    public function update(Request $request, BillingService $billingService)
     {
         $user = Auth::user();
         if ($user) {
@@ -109,7 +110,7 @@ class UserController extends Controller
             }
             $user->save();
 
-            event(new ProfileWasUpdated($user->id));
+            event(new ProfileWasUpdated($user->id, $billingService));
 
             return $this->success($user);
         }
