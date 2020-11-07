@@ -16,6 +16,7 @@ use Laravel\Passport\HasApiTokens;
  * @property int referred_by
  * @property int id
  * @property string phone
+ * @property boolean completed_profile
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {

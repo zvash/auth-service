@@ -21,6 +21,7 @@ class CreateConfigsTable extends Migration
         });
 
         \App\Config::create(['key' => 'refer_coins', 'value' => '20']);
+        \App\Config::create(['key' => 'profile_completion_coins', 'value' => '20']);
 
     }
 

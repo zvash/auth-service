@@ -12,14 +12,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \App\Events\ExampleEvent::class => [
-            \App\Listeners\ExampleListener::class,
-        ],
         \Laravel\Passport\Events\AccessTokenCreated::class => [
             \App\Listeners\ForceResetUserPassword::class,
         ],
         \App\Events\UserHasCompletedATaskForTheFirstTime::class => [
             \App\Listeners\PayReferralCoinsListener::class
+        ],
+        \App\Events\ProfileWasUpdated::class => [
+            \App\Listeners\PayProfileCompletionCoins::class
         ]
     ];
 }

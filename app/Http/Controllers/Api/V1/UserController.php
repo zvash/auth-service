@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Config;
+use App\Events\ProfileWasUpdated;
 use App\Events\UserHasCompletedATaskForTheFirstTime;
 use App\Exceptions\ReferSelfException;
 use App\Exceptions\ServiceException;
@@ -107,6 +108,8 @@ class UserController extends Controller
                 $user->setAttribute($key, $value);
             }
             $user->save();
+
+            event(new ProfileWasUpdated($user->id));
 
             return $this->success($user);
         }

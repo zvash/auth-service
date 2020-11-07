@@ -83,4 +83,20 @@ class ConfigController extends Controller
         }
         return $this->success(['refer_coins' => $amount]);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function get(Request $request)
+    {
+        try {
+            $referAmount = Config::getValue('refer_coins') * 1;
+            $profileAmount = Config::getValue('profile_completion_coins') * 1;
+        } catch (ServiceException $e) {
+            $referAmount = 0;
+            $profileAmount = 0;
+        }
+        return $this->success(['refer_coins' => $referAmount, 'profile_completion_coins' => $profileAmount]);
+    }
 }
