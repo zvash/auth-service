@@ -123,7 +123,7 @@ class UserController extends Controller
     {
         $currentTime = \Carbon\Carbon::now()->format('Y-m-d');
         $validator = Validator::make($request->all(), [
-            'phone' => 'required|regex:/^[1-9]{1}[0-9]{9}$/',
+            'phone' => 'required|regex:/^[1-9]{1}[0-9]{7,9}$/',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string',
