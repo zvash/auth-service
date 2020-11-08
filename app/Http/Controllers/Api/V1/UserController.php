@@ -37,7 +37,7 @@ class UserController extends Controller
     public function register(Request $request, NotificationService $notificationService, CountryRepository $countryRepository)
     {
         $validator = Validator::make($request->all(), [
-            'phone' => 'required|regex:/^[1-9]{1}[0-9]{9}$/',
+            'phone' => 'required|regex:/^[1-9]{1}[0-9]{7,9}$/',
             'country' => 'required|string|in:' . $countryRepository->getAllNameVariationsAsString()
         ]);
 
