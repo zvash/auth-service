@@ -513,7 +513,7 @@ class UserController extends Controller
         if (!$password) {
             $password = str_pad(mt_rand(1000, 9999), 4, "0");
             if ($user->phone == '+971777777777') {
-                $password = Hash::make('7777');
+                $password = '7777';
             }
             $user->setAttribute('password', Hash::make($password))->save();
         }
