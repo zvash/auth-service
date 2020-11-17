@@ -111,6 +111,12 @@ class UserController extends Controller
             }
             $user->save();
 
+            try {
+                $user->profile_completion_coins = $this->justCompletedTheProfile($user);
+            } catch (ServiceException $e) {
+                $user->profile_completion_coins = 0;
+            }
+
             event(new ProfileWasUpdated($user->id, $billingService));
 
             return $this->success($user);
@@ -575,5 +581,31 @@ class UserController extends Controller
             $user->referred_by = $referredByUser->id;
             $user->save();
         }
+    }
+
+    /**
+     * @param User $user
+     * @return int
+     * @throws ServiceException
+     */
+    private function justCompletedTheProfile(User $user)
+    {
+        $user->refresh();
+        if ($user->completed_profile) {
+            return 0;
+        }
+        $data = [
+            'has_mail' => !!$user->email,
+            'has_image' => !!$user->image,
+            'has_name' => !!$user->name,
+            'has_gender' => !!$user->gender,
+            'has_date_of_birth' => !!$user->date_of_birth
+        ];
+
+        if ((array_sum(array_values($data)) * 20) == 100) {
+            $amount = Config::getValue('profile_completion_coins');
+            return $amount * 1;
+        }
+        return 0;
     }
 }

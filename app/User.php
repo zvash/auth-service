@@ -17,6 +17,10 @@ use Laravel\Passport\HasApiTokens;
  * @property int id
  * @property string phone
  * @property boolean completed_profile
+ * @property mixed email
+ * @property mixed name
+ * @property mixed gender
+ * @property mixed date_of_birth
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
