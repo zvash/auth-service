@@ -131,5 +131,6 @@ $app->router->group([
 
 $app->configure('auth');
 $app->configure('countries');
+$app->configure('active_countries');
 
 return $app;

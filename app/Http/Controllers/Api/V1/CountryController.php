@@ -17,7 +17,7 @@ class CountryController extends Controller
                 'message' => 'success',
                 'errors' => null,
                 'status' => true,
-                'data' => array_values(config('countries', []))
+                'data' => array_values(config('active_countries', []))
             ], 200
         );
     }
