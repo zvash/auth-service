@@ -97,18 +97,20 @@ class NotificationService
 
     /**
      * @param int $userId
+     * @param null|string $playerId
      * @param null|string $platform
      * @param null|string $deviceToken
      * @param null|string $playerToken
      * @return array
      */
-    public function removePlayer(int $userId, ?string $platform, ?string $deviceToken, ?string $playerToken)
+    public function removePlayer(int $userId, ?string $playerId,?string $platform, ?string $deviceToken, ?string $playerToken)
     {
         $payload = [
             'user_id' => $userId,
             'platform' => $platform,
             'device_token' => $deviceToken,
             'player_token' => $playerToken,
+            'player_id' => $playerId,
         ];
 
         try {

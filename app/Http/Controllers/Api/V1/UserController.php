@@ -187,10 +187,11 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user) {
+            $playerId = $request->exists('player_id') ? $request->get('player_id') : null;
             $playerToken = $request->exists('player_token') ? $request->get('player_token') : null;
             $deviceToken = $request->exists('device_token') ? $request->get('device_token') : null;
             $platform = $request->exists('platform') ? $request->get('platform') : null;
-            $notificationService->removePlayer($user->id, $platform, $deviceToken, $playerToken);
+            $notificationService->removePlayer($user->id, $playerId, $platform, $deviceToken, $playerToken);
 
             $user->token()->revoke();
             return $this->success([]);
