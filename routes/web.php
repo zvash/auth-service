@@ -39,6 +39,8 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         /** Authenticated Users Only */
         $router->group(['middleware' => 'auth'], function ($router) {
             $router->get('logout', 'UserController@logout');
+            $router->post('logout', 'UserController@logout');
+
             $router->get('authenticate', 'UserController@authenticate');
 
             $router->post('profile/update', 'UserController@update');
@@ -49,6 +51,11 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
             $router->get('configs/refer-coins', 'ConfigController@getReferralCoinAmount');
             $router->get('configs/coins', 'ConfigController@get');
+
+            $router->post('player/register', 'PlayerController@registerPlayerId');
+
+            $router->post('profile/iban', 'UserController@setIBan');
+            $router->get('profile/iban', 'UserController@getIBan');
         });
 
         $router->group(['middleware' => 'admin'], function ($router) {
@@ -65,6 +72,7 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
         $router->group(['middleware' => 'trusted'], function ($router) {
 
+            $router->get('users/{userId}', 'UserController@getUserById');
             $router->post('users/{userId}/complete-task', 'UserController@completeTask');
 
         });

@@ -21,6 +21,7 @@ use Laravel\Passport\HasApiTokens;
  * @property mixed name
  * @property mixed gender
  * @property mixed date_of_birth
+ * @property string iban
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -38,7 +39,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * @var array
      */
-    protected $appends = ['image_url', 'masked_phone'];
+    protected $appends = ['image_url', 'masked_phone', 'completion_percent'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -143,5 +144,21 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             return false;
         }
         return $this->last_logged_in == null;
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getCompletionPercentAttribute()
+    {
+        $data = [
+            'has_mail' => !!$this->email,
+            'has_image' => !!$this->image,
+            'has_name' => !!$this->name,
+            'has_gender' => !!$this->gender,
+            'has_date_of_birth' => !!$this->date_of_birth
+        ];
+
+        return (array_sum(array_values($data)) * 20);
     }
 }

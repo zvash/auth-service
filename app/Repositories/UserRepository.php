@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Exceptions\ServiceException;
 use App\Services\BillingService;
+use App\User;
 
 class UserRepository
 {
@@ -34,5 +35,30 @@ class UserRepository
             'data' => $response['data'],
             'code' => $response['status']
         ]);
+    }
+
+    /**
+     * @param User $user
+     * @param null|string $iban
+     * @return User
+     */
+    public function setIBan(User $user, ?string $iban)
+    {
+        $user->iban = $iban;
+        $user->save();
+        return $user;
+    }
+
+    /**
+     * @param User $user
+     * @return mixed
+     */
+    public function getIBan(User $user)
+    {
+        $user = User::find($user->id);
+        if ($user) {
+            return $user->iban;
+        }
+        return null;
     }
 }
