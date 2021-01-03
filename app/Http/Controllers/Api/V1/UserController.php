@@ -210,12 +210,12 @@ class UserController extends Controller
 
     /**
      * @param Request $request
-     * @param int $id
+     * @param int $userId
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function getUserById(Request $request, int $id)
+    public function getUserById(Request $request, int $userId)
     {
-        $user = User::find($id);
+        $user = User::find($userId);
         if ($user) {
             return $this->success($user);
         }
