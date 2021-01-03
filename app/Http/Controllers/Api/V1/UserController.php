@@ -587,6 +587,32 @@ class UserController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param NotificationService $notificationService
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function notifications(Request $request, NotificationService $notificationService)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $page = $request->exists('page') ? $request->get('page') : 1;
+            $userId = $user->id;
+            $response = $notificationService->getNotifications($userId, $page);
+            if ($response['status'] == 200) {
+                $notifications = $response['data'];
+                $notifications['first_page_url'] = $this->replacePaginationUrlForNotifications($notifications['first_page_url']);
+                $notifications['last_page_url'] = $this->replacePaginationUrlForNotifications($notifications['last_page_url']);
+                $notifications['next_page_url'] = $this->replacePaginationUrlForNotifications($notifications['next_page_url']);
+                $notifications['prev_page_url'] = $this->replacePaginationUrlForNotifications($notifications['prev_page_url']);
+                $notifications['path'] = $this->replacePaginationUrlForNotifications($notifications['path']);
+                return $this->success($notifications);
+            }
+            return $this->failMessage('Something went wrong in notification service', 400);
+        }
+        return $this->failMessage('Content not found.', 404);
+    }
+
+    /**
      * @param User $user
      * @param NotificationService $notificationService
      * @param string $password
@@ -685,5 +711,22 @@ class UserController extends Controller
             return $amount * 1;
         }
         return 0;
+    }
+
+    /**
+     * @param null|string $currentUrl
+     * @return null|string
+     */
+    private function replacePaginationUrlForNotifications(?string $currentUrl)
+    {
+        if (!$currentUrl) {
+            return null;
+        }
+        $serviceUrl = rtrim(env('APP_URL'), '/');
+        $currentUrlParts = explode('?', $currentUrl);
+        if (isset($currentUrlParts[1])) {
+            return "$serviceUrl/api/v1/notifications?{$currentUrlParts[1]}";
+        }
+        return "$serviceUrl/api/v1/notifications";
     }
 }

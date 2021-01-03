@@ -131,6 +131,50 @@ class NotificationService
         }
     }
 
+    public function getNotifications(int $userId, int $page = 1)
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                $this->getNotificationsUrlSuffix($userId, $page),
+                [
+                    'headers' => $this->headers
+                ]
+            );
+            if ($response->getStatusCode() == 200) {
+                $contents = json_decode($response->getBody()->getContents(), 1);
+                return ['data' => $contents['data'], 'status' => 200];
+            }
+        } catch (GuzzleException $exception) {
+            dd($exception->getMessage());
+            return ['data' => $exception->getResponse()->getBody()->getContents(), 'status' => $exception->getCode()];
+        }
+    }
+
+    public function sendPushMessage(int $userId, string $message)
+    {
+        $payload = [
+            'message' => $message,
+        ];
+
+        try {
+            $response = $this->client->request(
+                'POST',
+                $this->getSendPushNotificationMessageUrlSuffix($userId),
+                [
+                    'json' => $payload,
+                    'headers' => $this->headers
+                ]
+            );
+            if ($response->getStatusCode() == 200) {
+                $contents = json_decode($response->getBody()->getContents(), 1);
+                return ['data' => $contents['data'], 'status' => 200];
+            }
+        } catch (GuzzleException $exception) {
+            return ['data' => $exception->getMessage(), 'status' => $exception->getCode()];
+        }
+    }
+
     private function getNotifyUserUrlSuffix()
     {
         return 'api/v1/send';
@@ -144,5 +188,15 @@ class NotificationService
     private function getRemovePlayerIdUrlSuffix()
     {
         return 'api/v1/player/remove';
+    }
+
+    private function getNotificationsUrlSuffix(int $userId, int $page = 1)
+    {
+        return "api/v1/users/$userId/notifications?page=$page";
+    }
+
+    private function getSendPushNotificationMessageUrlSuffix(int $userId)
+    {
+        return "api/v1/users/$userId/send-push-message";
     }
 }

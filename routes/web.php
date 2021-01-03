@@ -54,6 +54,8 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
             $router->post('player/register', 'PlayerController@registerPlayerId');
 
+            $router->get('notifications', 'UserController@notifications');
+
             $router->post('profile/iban', 'UserController@setIBan');
             $router->get('profile/iban', 'UserController@getIBan');
         });
