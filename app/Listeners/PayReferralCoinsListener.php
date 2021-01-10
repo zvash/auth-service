@@ -30,18 +30,20 @@ class PayReferralCoinsListener
     {
         $user = $event->getUser();
         $billingService = $event->getBillingService();
+        $affiliateService = $event->getAffiliateService();
         $referredUser = User::where('id', $user->referred_by)->first();
         if ($referredUser) {
-            try {
-                $amount = Config::getValue('refer_coins');
-                $transactions = [];
-                $transactions[] = $billingService->depositCoin($referredUser->id, $amount, 'users', $user->id);
-                $billingService->createTransactions($transactions);
-
-            } catch (ServiceException $exception) {
-                //pass.
-                dd($exception->getMessage());
-            }
+            $affiliateService->acceptReferral($user->referred_by, $user->id);
+//            try {
+//                $amount = Config::getValue('refer_coins');
+//                $transactions = [];
+//                $transactions[] = $billingService->depositCoin($referredUser->id, $amount, 'users', $user->id);
+//                $billingService->createTransactions($transactions);
+//
+//            } catch (ServiceException $exception) {
+//                //pass.
+//                dd($exception->getMessage());
+//            }
         }
     }
 }

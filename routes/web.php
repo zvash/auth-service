@@ -77,6 +77,8 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
             $router->get('users/{userId}', 'UserController@getUserById');
             $router->post('users/{userId}/complete-task', 'UserController@completeTask');
 
+            $router->get('configs/refer-coins-amount', 'ConfigController@getReferralCoinAmount');
+
         });
     });
 

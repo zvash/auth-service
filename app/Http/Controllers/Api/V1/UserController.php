@@ -9,6 +9,7 @@ use App\Exceptions\ReferSelfException;
 use App\Exceptions\ServiceException;
 use App\Repositories\UserRepository;
 use App\Role;
+use App\Services\AffiliateService;
 use App\Services\BillingService;
 use App\User;
 use Laravel\Passport\Client;
@@ -73,9 +74,10 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param BillingService $billingService
+     * @param AffiliateService $affiliateService
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function update(Request $request, BillingService $billingService)
+    public function update(Request $request, BillingService $billingService, AffiliateService $affiliateService)
     {
         $user = Auth::user();
         if ($user) {
@@ -94,7 +96,7 @@ class UserController extends Controller
             }
 
             try {
-                $this->saveReferredBy($request, $user);
+                $this->saveReferredBy($request, $user, $affiliateService);
             } catch (ServiceException $exception) {
                 return $this->failData($exception->getData(), 400);
             }
@@ -392,7 +394,7 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
         $user = Auth::user();
-        $publicFields = ['id', 'name', 'phone', 'email', 'country', 'currency', 'date_of_birth', 'gender', 'referral_code', 'image_url', 'roles', 'completion_percent'];
+        $publicFields = ['id', 'name', 'phone', 'email', 'country', 'currency', 'date_of_birth', 'gender', 'referral_code', 'image_url', 'roles', 'completion_percent', 'masked_phone'];
         if ($user) {
             $roles = $user->roles->pluck('name')->toArray();
             $userArray = array_filter($user->toArray(),
@@ -471,16 +473,17 @@ class UserController extends Controller
      * @param Request $request
      * @param int $userId
      * @param BillingService $billingService
+     * @param AffiliateService $affiliateService
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    public function completeTask(Request $request, int $userId, BillingService $billingService)
+    public function completeTask(Request $request, int $userId, BillingService $billingService, AffiliateService $affiliateService)
     {
         $user = User::find($userId);
         if ($user) {
             if (!$user->completed_a_task) {
                 $user->completed_a_task = true;
                 $user->save();
-                event(new UserHasCompletedATaskForTheFirstTime($user, $billingService));
+                event(new UserHasCompletedATaskForTheFirstTime($user, $billingService, $affiliateService));
             }
 
             return $this->success($user);
@@ -653,10 +656,11 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param User $user
+     * @param AffiliateService $affiliateService
      * @throws ReferSelfException
      * @throws ServiceException
      */
-    private function saveReferredBy(Request $request, User $user)
+    private function saveReferredBy(Request $request, User $user, AffiliateService $affiliateService)
     {
         if ($request->has('referral_code')) {
             $referralCode = $request->get('referral_code');
@@ -684,6 +688,8 @@ class UserController extends Controller
             }
             $user->referred_by = $referredByUser->id;
             $user->save();
+            $amount = Config::getValue('refer_coins') * 1;
+            $affiliateService->registerClaim($user->referred_by, 'referrals', $user->id, $amount);
         }
     }
 
