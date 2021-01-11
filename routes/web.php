@@ -79,6 +79,8 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
 
             $router->get('configs/refer-coins-amount', 'ConfigController@getReferralCoinAmount');
 
+            $router->post('users/profiles/get', 'UserController@getProfiles');
+
         });
     });
 
