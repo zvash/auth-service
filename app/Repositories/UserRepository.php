@@ -18,11 +18,11 @@ class UserRepository
      */
     public function getCoinsFromReferrals(array $users, BillingService $billingService)
     {
-        $sources['users'] = [];
+        $sources['referrals'] = [];
         foreach ($users as $user) {
-            $sources['users'][] = $user['id'];
+            $sources['referrals'][] = $user['id'];
         }
-        if ($sources['users']) {
+        if ($sources['referrals']) {
             $response = $billingService->getSourcesBalances($sources);
             if ($response['status'] == 200) {
                 return $response['data'];
