@@ -554,6 +554,7 @@ class UserController extends Controller
                         unset($referringUsers[$index]['id']);
                         unset($referringUsers[$index]['phone']);
                         unset($referringUsers[$index]['image']);
+                        unset($referringUsers[$index]['completion_percent']);
                     }
                     $referringUsersPaginatedArray['data'] = $referringUsers;
                     return $this->success($referringUsersPaginatedArray);
